@@ -61,7 +61,7 @@ export default function Home() {
 
                 <Link href="cadastro_usuario"> <button class="btn btn-secondary btn-sm" > Cadastro </button> </Link>
 
-                <button class="btn btn-secondary btn-sm" > Login </button>
+               <Link href="login">  <button class="btn btn-secondary btn-sm" > Login </button> </Link> 
               </div>
 
             </div>
