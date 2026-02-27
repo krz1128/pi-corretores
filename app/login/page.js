@@ -16,6 +16,7 @@ export default function Login() {
             
              <Link href="dashboard">  <button type="button" class="btn btn-primary btn-sm">Entrar</button> </Link>
 
+
         </div>
        
     )
