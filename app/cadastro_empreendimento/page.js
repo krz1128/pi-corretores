@@ -3,28 +3,7 @@ export default function CadastroEmpreendimento() {
     return (
         <div>
             <h1>Cadastro de empreendimentos</h1>
-            <br/>
-            <h2>Empreendimentos</h2>
-
-            <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever="@mdo"
-            >
-                Open modal for @mdo
-            </button>
-
-            <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever="@fat"
-            >
-                Open modal for @fat
-            </button>
+            <br />
 
             <button
                 type="button"
@@ -33,7 +12,7 @@ export default function CadastroEmpreendimento() {
                 data-bs-target="#exampleModal"
                 data-bs-whatever="@getbootstrap"
             >
-                Open modal for @getbootstrap
+                Novo empreendimento
             </button>
 
             <div
@@ -47,7 +26,7 @@ export default function CadastroEmpreendimento() {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="exampleModalLabel">
-                                New message
+                                Insira as informações
                             </h1>
                             <button
                                 type="button"
@@ -59,9 +38,9 @@ export default function CadastroEmpreendimento() {
 
                         <div className="modal-body">
                             <form>
-                                <div className="mb-3">
+                                <div className="mb-1">
                                     <label htmlFor="recipient-name" className="col-form-label">
-                                        Recipient:
+                                        Construtora:
                                     </label>
                                     <input
                                         type="text"
@@ -70,9 +49,53 @@ export default function CadastroEmpreendimento() {
                                     />
                                 </div>
 
-                                <div className="mb-3">
+                                <div className="mb-1">
+                                    <label htmlFor="recipient-name" className="col-form-label">
+                                        Tipo de imóvel:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="recipient-name"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label htmlFor="recipient-name" className="col-form-label">
+                                        Forma de pagamento:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="recipient-name"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label htmlFor="recipient-name" className="col-form-label">
+                                        Prazo de entrega:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="recipient-name"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label htmlFor="recipient-name" className="col-form-label">
+                                        Unidades disponíveis:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="recipient-name"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
                                     <label htmlFor="message-text" className="col-form-label">
-                                        Message:
+                                        Condomínio:
                                     </label>
                                     <textarea
                                         className="form-control"
@@ -88,66 +111,16 @@ export default function CadastroEmpreendimento() {
                                 className="btn btn-secondary"
                                 data-bs-dismiss="modal"
                             >
-                                Close
+                                Cancelar
                             </button>
                             <button type="button" className="btn btn-primary">
-                                Send message
+                                Cadastrar
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            <form>
-                <label>
-                    Construtora:
-                    <input type="text" className="inputNomeConstrutora" />
-                </label>
-
-                <br /><br />
-
-                <label>
-                    Tipo de imóvel:
-                    <input type="text" className="inputTipoImovel" />
-                </label>
-
-                <br /><br />
-
-                <label>
-                    Forma de pagamento:
-                    <input type="text" className="inputFormaPagamento" />
-                </label>
-
-                <br /><br />
-
-                <label>
-                    Prazo de entrega:
-                    <input type="text" className="inputPrazo" />
-                </label>
-
-                <br /><br />
-
-                <label>
-                    Imóveis disponíveis:
-                    <input
-                        type="text"
-                        className="inputqntImovelEmpreendimento"
-                    />
-                </label>
-
-                <br /><br />
-
-                <label>
-                    Condomínio:
-                    <input type="text" className="inputCondominio" />
-                </label>
-
-                <br /><br />
-
-                <button type="submit">Salvar</button>
-                <button type="reset">Cancelar</button>
-            </form>
 
             <h2>Empreendimentos</h2>
 
@@ -158,7 +131,7 @@ export default function CadastroEmpreendimento() {
                         <td>Tipo de imóvel</td>
                         <td>Pagamento</td>
                         <td>Prazo de entrega</td>
-                        <td>Imóveis disponíveis</td>
+                        <td>Unidades disponíveis</td>
                         <td>Condomínio</td>
                     </tr>
                 </thead>
