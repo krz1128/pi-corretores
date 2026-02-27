@@ -1,0 +1,66 @@
+body {
+    border: 100px solid #F2D6B3;
+    background-color: rgb(255, 246, 236);
+}
+
+.menulateral{
+    text-align: center;
+     font-family: "Delius", cursive;
+     color: #1c2b3a;
+     background-color: #ffb74d;
+     
+     width: 300px;
+     height: 600px ;
+     
+}
+
+.menulateral .list-group a{
+    background-color: transparent;
+}
+
+.foto{
+
+    margin: 20px 20px 0px 0px;
+    
+}
+
+.ImobConnect{
+
+    margin: 0px 30px 30px 30px ;
+
+}
+
+.botaoinicio{
+
+    margin: 30px 0px 0px 0px;
+
+}
+
+.quad{
+
+    margin: 500px 100px 100px 0px;
+
+}
+
+.menul{
+
+    margin: 150px 0px 0px 0px;
+    position: relative;
+}
+
+.tabelausuarios{
+
+    margin: 70px 0px 0px 0px;
+
+}
+
+.cartao2{
+
+    margin: 30px 0px 0px 0px;
+}
+
+.tudo{
+
+    border-radius: 100px;
+
+}
