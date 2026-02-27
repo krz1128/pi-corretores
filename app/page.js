@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./paginaInicial.css"
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
           <div class="card text-center cardInicial fs-2">
             <div class="cardInicial">
               <h5> Gestão completa em um só lugar </h5>
-              <hr/>
+              <hr />
             </div>
             <div class="cardGrande">
 
@@ -53,15 +54,13 @@ export default function Home() {
 
             </div>
 
-            <div class="d-grid gap-2 col-2 mx-auto botaoGrande">
-              <button class="btn btn-secundary"> Faça login fácil </button>
-
-            </div>
             <br />
 
             <div class="botaoDuplo">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-secondary btn-sm" > Cadastro </button>
+
+                <Link href="cadastro_usuario"> <button class="btn btn-secondary btn-sm" > Cadastro </button> </Link>
+
                 <button class="btn btn-secondary btn-sm" > Login </button>
               </div>
 
