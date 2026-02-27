@@ -1,3 +1,4 @@
+import Link from "next/link"
 import "./cadastro_usuario.css" 
 
 export default function CadastroUsuario() {
@@ -59,7 +60,9 @@ export default function CadastroUsuario() {
 
                             <br /><br />
 
-                            <button type="salvar"> Criar Login</button>
+
+                            <Link href="login">  <button type="salvar"> Criar Login</button> </Link>
+                           
 
 
                         </form>

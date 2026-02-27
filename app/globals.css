@@ -1,0 +1,11 @@
+body {
+    border: 100px solid #F2D6B3;
+    background-color: rgb(255, 246, 236);
+    height: 100vh;
+}
+
+.logo{
+    position: absolute;
+    left: 100;
+    top: 25;
+}
