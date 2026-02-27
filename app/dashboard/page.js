@@ -1,3 +1,4 @@
+import Link from "next/link"
 import "./painel_adm.css"
 
 export default function Dashboard() {
@@ -12,12 +13,12 @@ export default function Dashboard() {
                     <table>
                         <tbody>
 
-                        <tr>
+                            <tr>
 
-                            <td><img src="https://placehold.co/50" className="foto" /></td>
-                            <td><h1 className="fs-5 ImobConnect">ImobConnect</h1></td>
+                                <td><img src="https://placehold.co/50" className="foto" /></td>
+                                <td><h1 className="fs-5 ImobConnect">ImobConnect</h1></td>
 
-                        </tr>
+                            </tr>
 
 
                         </tbody>
@@ -34,12 +35,12 @@ export default function Dashboard() {
                         </div>
 
                         <div className="botaoinicio list-group list-group-flush fs-4">
-                            <a href="#" className="list-group-item list-group-item-action botaoinicio"
-                                aria-current="true">Início</a>
-                            <a href="#" className="list-group-item list-group-item-action active">Corretores</a>
-                            <a href="#" className="list-group-item list-group-item-action">Clientes</a>
+                            <Link href="#" className="list-group-item list-group-item-action botaoinicio"aria-current="true">Início</Link>
+                            <Link href="corretores" className="list-group-item list-group-item-action active">Corretores</Link>
+                            <Link href="lista_clientes" className="list-group-item list-group-item-action">Clientes</Link>
                             <a href="#" className="list-group-item list-group-item-action">Empreendimentos</a>
-                            <a href="#" className="list-group-item list-group-item-action">Imóveis</a>
+                            <Link href="imoveis" className="list-group-item list-group-item-action">Imóveis</Link>
+
                         </div>
 
                         <div className="text-center menuLateralPerfil">
@@ -75,51 +76,51 @@ export default function Dashboard() {
                             <tr>
 
 
-                            
-                            <td>
 
-                                <div type="button" className="card" style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                <td>
+
+                                    <div type="button" className="card" style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
                             </tr>
 
                             <tr>
 
-                            <td>
+                                <td>
 
-                                <div className="card" style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                    <div className="card" style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
                             </tr>
 
                             <tr>
 
-                            <td>
+                                <td>
 
-                                <div className="card" style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                    <div className="card" style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
 
                             </tr>
                         </tbody>
@@ -130,61 +131,61 @@ export default function Dashboard() {
 
                             <tr>
 
-                            <td>
+                                <td>
 
 
-                                <div className="card cartao2 " style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                    <div className="card cartao2 " style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </td>
+                                </td>
                             </tr>
 
                             <tr>
 
-                            <td>
+                                <td>
 
 
-                                <div className="card cartao2 " style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                    <div className="card cartao2 " style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </td>
+                                </td>
                             </tr>
 
                             <tr>
 
-                            <td>
+                                <td>
 
 
-                                <div className="card cartao2 " style={{width: 220}}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                    <div className="card cartao2 " style={{ width: 220 }}>
+                                        <div className="card-body">
+                                            <h5 className="card-title">Card title</h5>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                            <a href="#" className="card-link">Card link</a>
+                                            <a href="#" className="card-link">Another link</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </td>
+                                </td>
                             </tr>
                         </tbody>
 
 
-            </table>
+                    </table>
 
                 </div>
 
@@ -192,44 +193,44 @@ export default function Dashboard() {
 
 
 
-            <table className="table table-striped table-hover tabelausuarios ">
+                <table className="table table-striped table-hover tabelausuarios ">
 
-                <thead className="table-primary">
+                    <thead className="table-primary">
+                        <tbody>
+
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+
+                        </tbody>
+                    </thead>
+
+
                     <tbody>
+                        <tbody>
+                            <th scope="row">1</th>
+                            <td>23526</td>
+                            <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 1</td>
 
-                        <th scope="col">#</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
+                        </tbody>
+                        <tbody>
+                            <th scope="row">2</th>
+                            <td>63464</td>
+                            <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 2</td>
 
+                        </tbody>
+                        <tbody>
+                            <th scope="row">3</th>
+                            <td>4747</td>
+                            <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 3</td>
+
+                        </tbody>
                     </tbody>
-                </thead>
+                </table>
+            </div>
 
+        </div >
 
-                <tbody>
-                    <tbody>
-                        <th scope="row">1</th>
-                        <td>23526</td>
-                        <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 1</td>
-
-                    </tbody>
-                    <tbody>
-                        <th scope="row">2</th>
-                        <td>63464</td>
-                        <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 2</td>
-
-                    </tbody>
-                    <tbody>
-                        <th scope="row">3</th>
-                        <td>4747</td>
-                        <td> <img className="rounded-circle" src="https://placehold.co/30" /> Sei lá 3</td>
-
-                    </tbody>
-                </tbody>
-            </table>
-        </div>
-
-    </div >
-        
 
     )
 }
