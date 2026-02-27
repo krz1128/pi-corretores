@@ -1,3 +1,5 @@
+import "./cadastro_usuario.css" 
+
 export default function CadastroUsuario() {
     return (
         <div>
