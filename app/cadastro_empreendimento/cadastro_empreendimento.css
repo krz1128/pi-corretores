@@ -1,0 +1,130 @@
+/* Container geral */
+div {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Títulos */
+h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #212529;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 24px 0 16px;
+  color: #343a40;
+}
+
+/* Botões do topo */
+.btn {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+/* Formulário */
+form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+/* Labels */
+form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Inputs */
+form input {
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+}
+
+/* Botões do formulário */
+form button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+form button[type="submit"] {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0b5ed7;
+}
+
+form button[type="reset"] {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+form button[type="reset"]:hover {
+  background-color: #5c636a;
+}
+
+/* Tabela */
+.tabelaEmpreendimentos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background-color: #fff;
+}
+
+/* Cabeçalho da tabela */
+.tabelaEmpreendimentos thead {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.tabelaEmpreendimentos td {
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Linhas da tabela */
+.tabelaEmpreendimentos tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.tabelaEmpreendimentos tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Modal (ajustes leves para Bootstrap) */
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.modal-footer .btn-primary {
+  background-color: #0d6efd;
+}
