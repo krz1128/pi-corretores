@@ -1,3 +1,6 @@
+import "./login.css"
+import Link from "next/link"
+
 export default function Login() {
     return (
         <div>
@@ -10,7 +13,9 @@ export default function Login() {
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Senha"/>
 
             </div>
-            <button type="button" class="btn btn-primary btn-sm">Entrar</button>
+            
+             <Link href="dashboard">  <button type="button" class="btn btn-primary btn-sm">Entrar</button> </Link>
+
         </div>
        
     )
