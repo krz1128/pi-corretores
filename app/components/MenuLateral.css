@@ -1,0 +1,11 @@
+.menulateral{
+    text-align: center;
+     font-family: "Delius", cursive;
+     color: #1c2b3a;
+     background-color: #ffb74d;
+     
+}
+
+.menulateral .list-group a{
+    background-color: transparent;
+}
