@@ -8,10 +8,10 @@ export default function CadastroUsuario() {
 
                 <div>
 
-                    <div class="col-8 bg-dark menuLateral">
+                    <div class="menuLateral">
 
                         <div class="text-center mt-5">
-                            <h1 class="fs-1"> Cadastre-se </h1>
+                            <h1 class="fs-1"> <strong>Cadastre-se</strong> </h1>
                         </div>
 
 
