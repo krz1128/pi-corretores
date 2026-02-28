@@ -10,10 +10,11 @@ export default function Menulateral() {
             </div>
 
             <div className="botaoinicio list-group list-group-flush fs-4">
-                <Link href="/" className="list-group-item list-group-item-action botaoinicio" aria-current="true">Início</Link>
+                <Link href="dashboard" className="list-group-item list-group-item-action botaoinicio" aria-current="true">Início</Link>
+                <Link href="lista_diaria" className="list-group-item list-group-item-action">Lista diária</Link>
                 <Link href="corretores" className="list-group-item list-group-item-action active">Corretores</Link>
-                <Link href="lista_clientes" className="list-group-item list-group-item-action">Clientes</Link>
-                {/* <a href="#" className="list-group-item list-group-item-action">Empreendimentos</a> */}
+                <Link href="clientes" className="list-group-item list-group-item-action">Clientes</Link>
+                <Link href="cadastro_empreendimento" className="list-group-item list-group-item-action">Empreendimentos</Link>
                 <Link href="imoveis" className="list-group-item list-group-item-action">Imóveis</Link>
 
             </div>
