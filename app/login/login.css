@@ -8,4 +8,23 @@ body{
    
      
 }
+  .logincadastro{
+     text-align: center;
+    background: #ffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50px;
+  }
 
+  
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6C63FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
