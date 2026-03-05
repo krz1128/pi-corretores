@@ -1,3 +1,4 @@
+import "./clientes.css"
 function ListaClientes () {
 
     const clientes = [
@@ -87,7 +88,7 @@ function ListaClientes () {
       <h1>Lista de Clientes</h1>
       <h1/>
 
-      <table class="table">
+      <table class="table tabelaClientes">
         <thead>
           <tr>
             <th scope="col">Nome</th>
