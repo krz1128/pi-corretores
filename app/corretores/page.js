@@ -53,6 +53,10 @@ function Corretores() {
                                     <label for="e-mail" class="col-form-label">e-mail: </label>
                                     <textarea class="form-control" id="message-text"></textarea>
                                 </div>
+                                 <div class="mb-3">
+                                    <label for="telefone" class="col-form-label">Telefone: </label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
