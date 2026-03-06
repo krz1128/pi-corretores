@@ -251,8 +251,8 @@ function salvar(e) {
                 <th scope="row">{item.construtora}</th>
                 <td>{item.tipoImovel}</td>
                 <td>{item.pagamento}</td>
-                <td>{item.unidadesDisponiveis}</td>
                 <td>{item.prazoEntrega}</td>
+                <td>{item.unidadesDisponiveis}</td>
                 <td>{item.condominio}</td>
               </tr>
             )
