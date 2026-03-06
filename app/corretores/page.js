@@ -1,8 +1,18 @@
+'use client'
 import Link from "next/link"
 import "./corretores.css"
+import { useState } from "react";
+
+
+
 
 function Corretores() {
-    const listaCorretores = [
+
+    const [nome, alteraNome] = useState("")
+    const [email, alteraEmail] = useState("")
+    const [telefone, alteraTelefone] = useState("")
+
+    const [listaCorretores, alteraListaCorretores] = useState([
         {
             nome: "João Silva",
             email: "joao.silva@imobiliaria.com",
@@ -23,11 +33,25 @@ function Corretores() {
             email: "ana.costa@imobiliaria.com",
             telefone: "(41) 97654-3210"
         }
-    ];
+    ]);
+
+    function salvar(e) {
+        e.preventDefault()
+
+        const objeto = {
+            nome: nome,
+            email: email,
+            telefone: telefone,
+        }
+
+        alteraListaCorretores(listaCorretores.concat(objeto))
+    }
+
 
     return (
         // div principal
         <div>
+
 
             <div class="titulo"></div>
             <h1>Página de Corretores (Raianny) </h1>
@@ -47,22 +71,24 @@ function Corretores() {
                             <form>
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Nome:</label>
-                                    <input type="text" class="form-control" id="recipient-name" />
+                                    <input type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
                                 </div>
                                 <div class="mb-3">
                                     <label for="e-mail" class="col-form-label">e-mail: </label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea class="form-control" id="message-text" onChange={e => alteraEmail(e.target.value)}></textarea>
                                 </div>
-                                 <div class="mb-3">
+                                <div class="mb-3">
                                     <label for="telefone" class="col-form-label">Telefone: </label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea class="form-control" id="message-text" onChange={e => alteraTelefone(e.target.value)}></textarea>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="salvar" class="btn btn-primary">Salvar</button>
+                            <button onClick={salvar} class="btn btn-primary">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 
+                            modal.close();
+                             
                         </div>
                     </div>
                 </div>
@@ -94,6 +120,7 @@ function Corretores() {
 
 
         </div>
+
     )
 }
 
