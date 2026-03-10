@@ -5,6 +5,7 @@ export default function CadastroEmpreendimento() {
 
     const [construtora, alteraConstrutora] = useState("")
     const [tipoimovel, alteraTipoimovel] = useState("")
+    const [valor, alteraValor] = useState("")
     const [pagamento, alteraPagamento] = useState("")
     const [prazo, alteraPrazo] = useState("")
     const [unidades, alteraUnidades] = useState("")
@@ -14,6 +15,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Tecnisa",
     tipoImovel: "Apartamento (3 Quartos)",
+    Valor: "R$ 850.000",
     pagamento: "Financiamento Bancário / 30% Entrada",
     prazoEntrega: "Dezembro 2026",
     unidadesDisponiveis: 12,
@@ -22,6 +24,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "MRV",
     tipoImovel: "Studio",
+    Valor: "R$ 850.000",
     pagamento: "Minha Casa Minha Vida / Parcelamento em 60x",
     prazoEntrega: "Pronto para morar",
     unidadesDisponiveis: 4,
@@ -30,6 +33,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Cyrela",
     tipoImovel: "Cobertura Duplex",
+    Valor: "R$ 850.000",
     pagamento: "A vista ou Fluxo Direto",
     prazoEntrega: "Junho 2027",
     unidadesDisponiveis: 2,
@@ -38,6 +42,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Even",
     tipoImovel: "Apartamento (2 Quartos)",
+    Valor: "R$ 850.000",
     pagamento: "Financiamento SAC",
     prazoEntrega: "Março 2026",
     unidadesDisponiveis: 25,
@@ -46,6 +51,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Gafisa",
     tipoImovel: "Garden",
+    Valor: "R$ 850.000",
     pagamento: "30% durante obra / 70% na entrega",
     prazoEntrega: "Outubro 2025",
     unidadesDisponiveis: 5,
@@ -54,6 +60,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Moura Dubeux",
     tipoImovel: "Empresarial (Sala)",
+    Valor: "R$ 850.000",
     pagamento: "Investimento Direto",
     prazoEntrega: "Janeiro 2028",
     unidadesDisponiveis: 18,
@@ -62,6 +69,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Tenda",
     tipoImovel: "Apartamento (1 Quarto)",
+    Valor: "R$ 850.000",
     pagamento: "Subsídio do Governo / FGTS",
     prazoEntrega: "Julho 2026",
     unidadesDisponiveis: 40,
@@ -70,6 +78,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Eztec",
     tipoImovel: "Apartamento (4 Suítes)",
+    Valor: "R$ 850.000",
     pagamento: "Plano Empresário",
     prazoEntrega: "Agosto 2027",
     unidadesDisponiveis: 7,
@@ -78,6 +87,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Direcional",
     tipoImovel: "Casa em Condomínio",
+    Valor: "R$ 850.000",
     pagamento: "Crédito Imobiliário Caixa",
     prazoEntrega: "Maio 2026",
     unidadesDisponiveis: 15,
@@ -86,6 +96,7 @@ export default function CadastroEmpreendimento() {
   {
     construtora: "Mitre",
     tipoImovel: "Loft Moderno",
+    Valor: "R$ 850.000",
     pagamento: "Entrada facilitada em 36x",
     prazoEntrega: "Novembro 2026",
     unidadesDisponiveis: 9,
@@ -98,6 +109,7 @@ function salvar(e) {
     const objeto = {
       construtora: construtora,
       tipoImovel: tipoimovel,
+      valor: valor,
       pagamento: pagamento,
       prazo: prazo,
       unidades: unidades,
@@ -162,6 +174,17 @@ function salvar(e) {
                                         Tipo de imóvel:
                                     </label>
                                     <input onChange={e => alteraTipoimovel(e.target.value)}
+                                        type="text"
+                                        className="form-control"
+                                        id="recipient-name"
+                                    />
+                                </div>
+
+                                 <div className="mb-1">
+                                    <label htmlFor="recipient-name" className="col-form-label">
+                                        Valor:
+                                    </label>
+                                    <input onChange={e => alteraValor(e.target.value)}
                                         type="text"
                                         className="form-control"
                                         id="recipient-name"
@@ -237,6 +260,7 @@ function salvar(e) {
                     <tr>
                         <td>Construtora</td>
                         <td>Tipo de imóvel</td>
+                         <td>Valor</td>
                         <td>Pagamento</td>
                         <td>Prazo de entrega</td>
                         <td>Unidades disponíveis</td>
@@ -250,6 +274,7 @@ function salvar(e) {
               item => <tr>
                 <th scope="row">{item.construtora}</th>
                 <td>{item.tipoImovel}</td>
+                <td>{item.Valor}</td>
                 <td>{item.pagamento}</td>
                 <td>{item.prazoEntrega}</td>
                 <td>{item.unidadesDisponiveis}</td>
