@@ -106,7 +106,8 @@ function Corretores() {
                 <tbody>
 
                     {
-                        listaCorretores.map(
+                        listaCorretores.map(,
+                            
                             item => <tr>
                                 <th scope="row">{item.nome}</th>
                                 <td>{item.email}</td>
