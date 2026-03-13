@@ -1,6 +1,8 @@
 'use client'
 import "./cadastro_empreendimento.css"
-import { useState } from "react";
+import {  useEffect, useState } from "react";
+import { createClient, FunctionRegion } from '@supabase/supabase-js'
+const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_teTpea3gZLy8U1iDzWuR4Q_z4Mu_9Aa')
 export default function CadastroEmpreendimento() {
 
     const [construtora, alteraConstrutora] = useState("")
@@ -11,100 +13,9 @@ export default function CadastroEmpreendimento() {
     const [unidades, alteraUnidades] = useState("")
     const [condominio, alteraCondominio] = useState("")
 
-    const [empreendimentos, alteraCadastroEmpreendimento] = useState([
-  {
-    construtora: "Tecnisa",
-    tipoImovel: "Apartamento (3 Quartos)",
-    Valor: "R$ 850.000",
-    pagamento: "Financiamento Bancário / 30% Entrada",
-    prazoEntrega: "Dezembro 2026",
-    unidadesDisponiveis: 12,
-    condominio: "R$ 850,00"
-  },
-  {
-    construtora: "MRV",
-    tipoImovel: "Studio",
-    Valor: "R$ 850.000",
-    pagamento: "Minha Casa Minha Vida / Parcelamento em 60x",
-    prazoEntrega: "Pronto para morar",
-    unidadesDisponiveis: 4,
-    condominio: "R$ 280,00"
-  },
-  {
-    construtora: "Cyrela",
-    tipoImovel: "Cobertura Duplex",
-    Valor: "R$ 850.000",
-    pagamento: "A vista ou Fluxo Direto",
-    prazoEntrega: "Junho 2027",
-    unidadesDisponiveis: 2,
-    condominio: "R$ 2.400,00"
-  },
-  {
-    construtora: "Even",
-    tipoImovel: "Apartamento (2 Quartos)",
-    Valor: "R$ 850.000",
-    pagamento: "Financiamento SAC",
-    prazoEntrega: "Março 2026",
-    unidadesDisponiveis: 25,
-    condominio: "R$ 620,00"
-  },
-  {
-    construtora: "Gafisa",
-    tipoImovel: "Garden",
-    Valor: "R$ 850.000",
-    pagamento: "30% durante obra / 70% na entrega",
-    prazoEntrega: "Outubro 2025",
-    unidadesDisponiveis: 5,
-    condominio: "R$ 1.100,00"
-  },
-  {
-    construtora: "Moura Dubeux",
-    tipoImovel: "Empresarial (Sala)",
-    Valor: "R$ 850.000",
-    pagamento: "Investimento Direto",
-    prazoEntrega: "Janeiro 2028",
-    unidadesDisponiveis: 18,
-    condominio: "R$ 450,00"
-  },
-  {
-    construtora: "Tenda",
-    tipoImovel: "Apartamento (1 Quarto)",
-    Valor: "R$ 850.000",
-    pagamento: "Subsídio do Governo / FGTS",
-    prazoEntrega: "Julho 2026",
-    unidadesDisponiveis: 40,
-    condominio: "R$ 210,00"
-  },
-  {
-    construtora: "Eztec",
-    tipoImovel: "Apartamento (4 Suítes)",
-    Valor: "R$ 850.000",
-    pagamento: "Plano Empresário",
-    prazoEntrega: "Agosto 2027",
-    unidadesDisponiveis: 7,
-    condominio: "R$ 3.200,00"
-  },
-  {
-    construtora: "Direcional",
-    tipoImovel: "Casa em Condomínio",
-    Valor: "R$ 850.000",
-    pagamento: "Crédito Imobiliário Caixa",
-    prazoEntrega: "Maio 2026",
-    unidadesDisponiveis: 15,
-    condominio: "R$ 390,00"
-  },
-  {
-    construtora: "Mitre",
-    tipoImovel: "Loft Moderno",
-    Valor: "R$ 850.000",
-    pagamento: "Entrada facilitada em 36x",
-    prazoEntrega: "Novembro 2026",
-    unidadesDisponiveis: 9,
-    condominio: "R$ 550,00"
-  }
-]);
+    const [empreendimentos, alteraCadastroEmpreendimento] = useState([]);
 
-function salvar(e) {
+async function salvar(e) {
     e.preventDefault()
     const objeto = {
       construtora: construtora,
@@ -116,6 +27,31 @@ function salvar(e) {
       condominio: condominio
 
     }
+
+           const { error } = await supabase
+            .from('empreendimentos')
+            .insert(objeto)
+        console.log(error)
+
+        if (error == null) {
+            alert("Empreendimento cadastrado com sucesso")
+            alteraConstrutora("")
+            alteraTipoimovel("")
+            alteraValor("")
+            alteraPagamento("")
+            alteraPrazo("")
+            alteraUnidades("")
+            alteraCondominio("")
+        }
+        else {
+            alert("Dados inválidos, verifique os campos e tente novamente.")
+        }
+    }
+
+     useEffect(() => {
+        buscar()
+    }, [])
+
     alteraCadastroEmpreendimento(empreendimentos.concat(objeto))
 }
     
