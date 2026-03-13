@@ -1,6 +1,6 @@
 'use client'
 import "./cadastro_empreendimento.css"
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createClient, FunctionRegion } from '@supabase/supabase-js'
 const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_teTpea3gZLy8U1iDzWuR4Q_z4Mu_9Aa')
 export default function CadastroEmpreendimento() {
@@ -15,20 +15,28 @@ export default function CadastroEmpreendimento() {
 
     const [empreendimentos, alteraCadastroEmpreendimento] = useState([]);
 
-async function salvar(e) {
-    e.preventDefault()
-    const objeto = {
-      construtora: construtora,
-      tipoImovel: tipoimovel,
-      valor: valor,
-      pagamento: pagamento,
-      prazo: prazo,
-      unidades: unidades,
-      condominio: condominio
 
+       async function buscar() {
+        const { data, error } = await supabase
+            .from('empreendimentos')
+            .select()
+        console.log(data)
+        alteraCadastroEmpreendimento(data)
     }
 
-           const { error } = await supabase
+    async function salvar() {
+        const objeto = {
+            construtora: construtora,
+            tipoImovel: tipoimovel,
+            valor: valor,
+            pagamento: pagamento,
+            prazo: prazo,
+            unidades: unidades,
+            condominio: condominio
+
+        }
+
+        const { error } = await supabase
             .from('empreendimentos')
             .insert(objeto)
         console.log(error)
@@ -48,13 +56,10 @@ async function salvar(e) {
         }
     }
 
-     useEffect(() => {
+    useEffect(() => {
         buscar()
     }, [])
 
-    alteraCadastroEmpreendimento(empreendimentos.concat(objeto))
-}
-    
     return (
 
         <div>
@@ -98,7 +103,7 @@ async function salvar(e) {
                                     <label htmlFor="recipient-name" className="col-form-label">
                                         Construtora:
                                     </label>
-                                    <input  onChange={e => alteraConstrutora(e.target.value)}
+                                    <input onChange={e => alteraConstrutora(e.target.value)}
                                         type="text"
                                         className="form-control"
                                         id="recipient-name"
@@ -116,7 +121,7 @@ async function salvar(e) {
                                     />
                                 </div>
 
-                                 <div className="mb-1">
+                                <div className="mb-1">
                                     <label htmlFor="recipient-name" className="col-form-label">
                                         Valor:
                                     </label>
@@ -196,7 +201,7 @@ async function salvar(e) {
                     <tr>
                         <td>Construtora</td>
                         <td>Tipo de imóvel</td>
-                         <td>Valor</td>
+                        <td>Valor</td>
                         <td>Pagamento</td>
                         <td>Prazo de entrega</td>
                         <td>Unidades disponíveis</td>
@@ -205,19 +210,19 @@ async function salvar(e) {
                 </thead>
 
                 <tbody>
-                  {
-            empreendimentos.map(
-              item => <tr>
-                <th scope="row">{item.construtora}</th>
-                <td>{item.tipoImovel}</td>
-                <td>{item.Valor}</td>
-                <td>{item.pagamento}</td>
-                <td>{item.prazoEntrega}</td>
-                <td>{item.unidadesDisponiveis}</td>
-                <td>{item.condominio}</td>
-              </tr>
-            )
-          }
+                    {
+                        empreendimentos.map(
+                            item => <tr>
+                                <th scope="row">{item.construtora}</th>
+                                <td>{item.tipoImovel}</td>
+                                <td>{item.Valor}</td>
+                                <td>{item.pagamento}</td>
+                                <td>{item.prazoEntrega}</td>
+                                <td>{item.unidadesDisponiveis}</td>
+                                <td>{item.condominio}</td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
         </div>
