@@ -3,6 +3,8 @@ import Link from "next/link"
 import "./corretores.css"
 import { useState } from "react";
 
+import { createClient, FunctionRegion } from '@supabase/supabase-js'
+const supabase = createClient('https://ksrbtutpfybyalxyijxd.supabase.co', 'sb_publishable_teTpea3gZLy8U1iDzWuR4Q_z4Mu_9Aa')
 
 
 
