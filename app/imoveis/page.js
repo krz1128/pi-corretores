@@ -17,7 +17,7 @@ function PaginaImoveis() {
         },
         {
             nome: "Sobrado Bela Vista",
-            endereco: "Rua das Acácias, 456 - Bela Vista - São Carlos/SP",
+            endereco: "Rua das Acácias, 454 - Bela Vista - São Carlos/SP",
             valor: 680000
         }
     ];
