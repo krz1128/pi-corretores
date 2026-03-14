@@ -2,7 +2,7 @@
 import "./cadastro_empreendimento.css"
 import { useEffect, useState } from "react";
 import { createClient, FunctionRegion } from '@supabase/supabase-js'
-const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_teTpea3gZLy8U1iDzWuR4Q_z4Mu_9Aa')
+const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
 export default function CadastroEmpreendimento() {
 
     const [construtora, alteraConstrutora] = useState("")
@@ -27,11 +27,11 @@ export default function CadastroEmpreendimento() {
     async function salvar() {
         const objeto = {
             construtora: construtora,
-            tipoImovel: tipoimovel,
-            valor: valor,
-            pagamento: pagamento,
-            prazo: prazo,
-            unidades: unidades,
+            tipo_imovel: tipoimovel,
+            valor_empreendimento: valor,
+            forma_pagamento: pagamento,
+            prazo_entrega: prazo,
+            unidades_disponiveis: unidades,
             condominio: condominio
 
         }
@@ -214,11 +214,11 @@ export default function CadastroEmpreendimento() {
                         empreendimentos.map(
                             item => <tr>
                                 <th scope="row">{item.construtora}</th>
-                                <td>{item.tipoImovel}</td>
-                                <td>{item.Valor}</td>
-                                <td>{item.pagamento}</td>
-                                <td>{item.prazoEntrega}</td>
-                                <td>{item.unidadesDisponiveis}</td>
+                                <td>{item.tipo_imovel}</td>
+                                <td>{item.valor_empreendimento}</td>
+                                <td>{item.forma_pagamento}</td>
+                                <td>{item.prazo_entrega}</td>
+                                <td>{item.unidades_disponiveis}</td>
                                 <td>{item.condominio}</td>
                             </tr>
                         )
