@@ -50,6 +50,7 @@ export default function CadastroEmpreendimento() {
             alteraPrazo("")
             alteraUnidades("")
             alteraCondominio("")
+            location.reload()
         }
         else {
             alert("Dados inválidos, verifique os campos e tente novamente.")
