@@ -1,6 +1,27 @@
+'use cliente'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import "./imoveis.css";
-export default function Imoveis() {
+
+function Imoveis() {
+ 
+    const tabelaImoveis = [
+
+        {
+            nome: "Casa Jardim Europa",
+            endereco: "Rua das Palmeiras, 123 - São Carlos/SP",
+            valor: 450000
+        },
+        {
+            nome: "Apartamento Centro Prime",
+            endereco: "Av. São Carlos, 890 - Centro - São Carlos/SP",
+            valor: 320000
+        },
+        {
+            nome: "Sobrado Bela Vista",
+            endereco: "Rua das Acácias, 456 - Bela Vista - São Carlos/SP",
+            valor: 680000
+        }
+    ];
+
     return (
         <div>
 
@@ -9,7 +30,6 @@ export default function Imoveis() {
                 <h1> Está procurando imóveis? Abaixo nós temos a solução para você! </h1>
 
             </div>
-
 
 
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -45,6 +65,7 @@ export default function Imoveis() {
 
 
 
-
     )
 }
+
+export default Imoveis()
