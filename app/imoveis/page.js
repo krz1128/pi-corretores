@@ -1,8 +1,9 @@
 'use cliente'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "./imoveis.css";
 
-function Imoveis() {
- 
+function PaginaImoveis() {
+
     const tabelaImoveis = [
 
         {
@@ -68,4 +69,4 @@ function Imoveis() {
     )
 }
 
-export default Imoveis()
+export default PaginaImoveis()
