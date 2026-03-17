@@ -1,9 +1,10 @@
 'use client'
 import Link from "next/link"
 import "./cadastro_usuario.css"
-import { createClient, FunctionRegion } from '@supabase/supabase-js'
 import { useEffect, useState } from "react"
-const supabase = createClient('https://ksrbtutpfybyalxyijxd.supabase.co', 'sb_publishable_teTpea3gZLy8U1iDzWuR4Q_z4Mu_9Aa')
+import { createClient } from '@supabase/supabase-js'
+const supabase = createClient( 'https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
+
 
 
 export default function CadastroUsuario() {
@@ -11,23 +12,13 @@ export default function CadastroUsuario() {
 
     const [nome, alteraNome] = useState("")
     const [email, alteraEmail] = useState("")
+    const [telefone, alteraTelefone] = useState("")
     const [senha, alteraSenha] = useState("")
-
-     const [cadastroUsuario, alteraCadastroUsuario] = useState([]);
-
-    // função para buscar a informação do banco de dados 
-    async function buscar() {
-        const { data, error } = await supabase
-            .from('usuarios')
-            .select()
-        console.log(data)
-        alteraCadastroUsuario(data)
-    }
 
 
     // Função para salvar
     async function salvar(e) {
-
+        e.preventDefault()
         const objeto = {
             nome: nome,
             email: email,
@@ -43,6 +34,7 @@ export default function CadastroUsuario() {
             alert("Usuário cadastrado com sucesso!")
             alteraNome("")
             alteraEmail("")
+            alteraTelefone("")
             alteraSenha("")
         }
         else {
@@ -50,12 +42,6 @@ export default function CadastroUsuario() {
         }
 
     }
-
-    //usEffect é chamado apenas ao iniciar a página, uma vez
-    useEffect(() => {
-        buscar()
-    }, [])
-
 
     return (
 
@@ -71,14 +57,14 @@ export default function CadastroUsuario() {
                         </div>
 
 
-                        <form onsubmit="salvar(event)">
+                        <form onsubmit={salvar}>
 
 
 
                             <label>
                                 Nome completo:
                                 <br />
-                                <input onChange={e => alteraNome(e.target.value)}required class="inputNome" />
+                                <input value={(nome)} onChange={e => alteraNome(e.target.value)}required class="inputNome" />
                             </label>
 
                             <br /><br />
@@ -86,23 +72,31 @@ export default function CadastroUsuario() {
                             <label>
                                 Email:
                                 <br />
-                                <input  onChange={e => alteraEmail(e.target.value)}required class="inputEmail" />
+                                <input value={(email)}  onChange={e => alteraEmail(e.target.value)}required class="inputEmail" />
                             </label>
 
 
                             <br /><br />
+
+                             <label>
+                                Telefone:
+                                <br />
+                                <input value={(telefone)}  onChange={e => alteraTelefone(e.target.value)}required class="inputTelefone" />
+                            </label>
+
+                            <br/> <br/>
 
                             <label>
                                 Crie sua senha:
                                 <br />
-                                <input onChange={e => alteraSenha(e.target.value)} required class="inputSenha" type="password" />
+                                <input value={(senha)} onChange={e => alteraSenha(e.target.value)} required class="inputSenha" type="password" />
                             </label>
 
 
                             <br /><br />
 
 
-                            <Link href="login">  <button onClick={salvar} type="salvar"> Criar Login</button> </Link>
+                            <button onClick={salvar} type="salvar"> Criar Login</button>
 
 
 
