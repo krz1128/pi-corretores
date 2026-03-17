@@ -1,3 +1,4 @@
+'use cliente'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./imoveis.css";
 
@@ -22,7 +23,6 @@ function PaginaImoveis() {
         }
     ];
 
-
     return (
         <div>
 
@@ -31,7 +31,6 @@ function PaginaImoveis() {
                 <h1> Está procurando imóveis? Abaixo nós temos a solução para você! </h1>
 
             </div>
-
 
 
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -67,6 +66,7 @@ function PaginaImoveis() {
 
 
 
-
     )
 }
+
+export default PaginaImoveis()
