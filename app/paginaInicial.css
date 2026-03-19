@@ -1,8 +1,81 @@
-.paginaInicial{
-    background-color: antiquewhite;
+
+/* Fundo e layout da página */
+.paginaInicial {
+  background-color: #f5f7fa; /* cinza claro */
+  padding: 50px 20px;        /* espaço interno */
+  font-family: 'Arial', sans-serif;
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* centraliza o conteúdo horizontalmente */
 }
 
-.cardInicial{
-    background-color: antiquewhite;
-    color:rgb(54, 54, 54)
+/* Título principal */
+.paginaInicial h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0d1b2a; /* azul escuro */
+  margin-bottom: 30px;
+}
+
+
+
+/* Título dentro do card */
+.cardInicial h5 {
+  font-weight: 600;
+  color: #0d1b2a;
+}
+
+/* Texto de apresentação */
+.cardApresentacao {
+  text-align: justify;
+  color: #334155; /* azul acinzentado */
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+/* Card grande que envolve o texto */
+.cardGrande {
+  padding: 20px;
+}
+
+/* Linha divisória */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #cfd8dc; /* cinza claro */
+  margin: 15px 0;
+}
+
+/* Botões principais (Cadastro/Login) */
+.botaoDuplo button {
+  background-color: #0d1b2a; /* azul escuro */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Hover dos botões */
+.botaoDuplo button:hover {
+  background-color: #1b2a3b; /* azul mais claro ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cardInicial {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .paginaInicial h1 {
+    font-size: 2.2rem;
+  }
+
+  .cardApresentacao {
+    font-size: 0.9rem;
+  }
 }

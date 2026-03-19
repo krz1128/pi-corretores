@@ -1,31 +1,105 @@
-body {
-    color: black;
-    font-family: "Montserrat", sans-serif;
-
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-input {
+/* Fundo claro elegante */
+.page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eef2f7;
+}
+
+/* Card principal */
+.menuLateral {
+    background: #ffffff;
+    padding: 40px;
     width: 100%;
-    padding: 5px;
-    margin: 1px 0;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #6C63FF;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.menuSuperior {
+/* Header */
+.text-center {
     text-align: center;
-    background: #ccc;
-    padding: 10px;
-    width: 50%;
-    max-width: 600px;
-    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+.menuLateral h1 {
+    font-size: 24px;
+    color: #1f2d3d;
+    margin-top: 10px;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Labels */
+label {
+    font-size: 13px;
+    color: #6b7280;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs */
+input, select {
+    margin-top: 6px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    background: #f9fafb;
+    transition: 0.2s;
+}
+
+/* Foco */
+input:focus, select:focus {
+    background: #fff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    outline: none;
+}
+
+/* Texto antes do select */
+p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: -10px;
+}
+
+/* Botão */
+button {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Hover */
+button:hover {
+    background: #1d4ed8;
+}
+
+/* Imagem */
+img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
 }

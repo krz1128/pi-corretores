@@ -27,23 +27,24 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
 
 
-        <div className="logo">
-            <h1 className="fs-5 ImobConnect">
-              <img src="https://placehold.co/50" className="me-2" />
-              ImobConnect
-            </h1>
-        </div>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-3 menulateral" style={{ backgroundColor: "#061247" }} >
+              {/* Logo dentro do menu lateral */}
+              <div className="logo">
+                <img src="https://placehold.co/50" alt="ImobConnect Logo" />
+                <h1 className="fs-5 ImobConnect">ImobConnect</h1>
+              </div>
 
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-3 menulateral">
-              <Menulateral/>              
+              {/* Menu lateral */}
+              <Menulateral />
+              
             </div>
-            <div class="col-9">
+
+            <div className="col-9">
               {children}
             </div>
           </div>
-
         </div>
 
 
