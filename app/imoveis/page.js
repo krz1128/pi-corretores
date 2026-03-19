@@ -1,72 +1,141 @@
-'use cliente'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import "./imoveis.css";
 
-function PaginaImoveis() {
+'use client'
+import { useEffect, useState } from "react";
 
-    const tabelaImoveis = [
+import { createClient } from '@supabase/supabase-js'
+const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
 
-        {
-            nome: "Casa Jardim Europa",
-            endereco: "Rua das Palmeiras, 123 - São Carlos/SP",
-            valor: 450000
-        },
-        {
-            nome: "Apartamento Centro Prime",
-            endereco: "Av. São Carlos, 890 - Centro - São Carlos/SP",
-            valor: 320000
-        },
-        {
-            nome: "Sobrado Bela Vista",
-            endereco: "Rua das Acácias, 456 - Bela Vista - São Carlos/SP",
-            valor: 680000
+
+function Imoveis() {
+
+    const [nome, alteraNome] = useState("")
+    const [endereco, alteraEndereco] = useState("")
+    const [valor, alteraValor] = useState("")
+
+    
+
+
+    const [listaImoveis, alteraListaImoveis] = useState([]);
+
+
+   async function buscar() {
+        const { data, error } = await supabase
+            .from('imoveis')
+            .select()
+        console.log(data)
+        alteraListaImoveis(data)
+    }
+
+
+    async function salvar(e) {
+
+        const objeto = {
+            nome: nome,
+            endereco: endereco,
+            valor: valor
         }
-    ];
+
+
+
+        const { error } = await supabase.from('imoveis').insert(objeto)
+        console.log(error)
+
+        if (error == null) {
+            alert("Imóvel cadastrado com sucesso!")
+            alteraNome("")
+            alteraEndereco("")
+            alteraValor("")
+
+            buscar()
+        } else {
+            alert("Dados inválidos, verifique os campos e tente novamente...")
+        }
+
+    }
+
+
+
+
+
+    useEffect(() => {
+        buscar()
+    }, [])
+
+
 
     return (
+        // div principal
         <div>
 
-            <div className="apresentacaoSite fs-9 text-center" >
 
-                <h1> Está procurando imóveis? Abaixo nós temos a solução para você! </h1>
+            <div class="titulo"></div>
+            <h1>Página de Imóveis </h1>
 
+
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Adicionar Imóvel</button>
+
+            {/* div modal */}
+            <div class="modal fade" id="exampleModal" tabindex="-1" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Novo imóvel </h2>
+                            <button class="btn-close" data-bs-dismiss="modal" ></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label"> Nome: </label>
+                                    <input value={(nome)} type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="e-mail" class="col-form-label"> Endereço: </label>
+                                    <textarea value={(endereco)} class="form-control" id="message-text" onChange={e => alteraEndereco(e.target.value)}></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label"> Valor </label>
+                                    <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button onClick={salvar} class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> Nome </th>
+                        <th scope="col"> Endereço </th>
+                        <th scope="col"> Valor </th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://i.pinimg.com/originals/07/11/0a/07110a80aa019d7f1e11ca050b77aadd.jpg" class="d-block w-50"  alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.adsttc.com/media/images/624c/abf4/0ba6/da01/66c7/d26d/large_jpg/014-casa-dotta-galeria-733.jpg?1649191946" class="d-block w-50" alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://plazachapeco.com.br/wp-content/uploads/2019/02/diferenca-entre-kitnet-studio-flat-e-loft.jpg" class="d-block w-50" alt="..."/>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+                    {
+                        listaImoveis.map(
+
+                            item => <tr>
+                                <th scope="row">{item.nome}</th>
+                                <td>{item.endereco}</td>
+                                <td>{item.valor}</td>
+                            </tr>
+                        )
+                    }
+
+                </tbody>
+            </table>
+
 
         </div>
-
-
-
-
 
     )
 }
 
-export default PaginaImoveis()
+export default Imoveis
