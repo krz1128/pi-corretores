@@ -119,33 +119,33 @@ return (
                 </div>
             </div>
         </div>
+        <div>
 
-        {/* tabela informações corretores */}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Senha</th>
-                </tr>
-            </thead>
-            <tbody>
+            {/* tabela informações corretores */}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                {
-                    listaCorretores.map(
+                    {
+                        listaCorretores.map(
+                            
+                            item => <tr>
+                                <th scope="row">{item.nome}</th>
+                                <td>{item.email}</td>
+                                <td>{item.telefone}</td>
+                            </tr>
+                        )
+                    }
 
-                        item => <tr>
-                            <th scope="row">{item.nome}</th>
-                            <td>{item.email}</td>
-                            <td>{item.senha}</td>
-                        </tr>
-                    )
-                }
-
-            </tbody>
-        </table>
-
-
+                </tbody>
+            </table>
+        </div>
     </div>
 
 )
