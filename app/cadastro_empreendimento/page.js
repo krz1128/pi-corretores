@@ -36,6 +36,17 @@ export default function CadastroEmpreendimento() {
 
         }
 
+       
+        async function acoes(id){
+        const opcao = confirm("Tem certeza que deseja excluir o item?")
+
+        if(opcao == false){
+            return
+        } //ALTERAR ESSE BOTÃO POSTERIORMENTE
+
+        const response = await supabase.from('empreendimentos').delete().eq('id', id)
+    }
+
         const { error } = await supabase
             .from('empreendimentos')
             .insert(objeto)
@@ -207,6 +218,7 @@ export default function CadastroEmpreendimento() {
                         <td>Prazo de entrega</td>
                         <td>Unidades disponíveis</td>
                         <td>Condomínio</td>
+                        <td>Ações</td>
                     </tr>
                 </thead>
 
@@ -221,6 +233,7 @@ export default function CadastroEmpreendimento() {
                                 <td>{item.prazo_entrega}</td>
                                 <td>{item.unidades_disponiveis}</td>
                                 <td>{item.condominio}</td>
+                                <td><button onClick={ ()=> acoes(item.id) }>AÇÕES</button></td>
                             </tr>
                         )
                     }
