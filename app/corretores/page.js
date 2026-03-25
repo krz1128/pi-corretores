@@ -107,28 +107,6 @@ function Corretores() {
 
     }
 
-    async function atualizar(){
-
-        const obj = {
-            nome: nome,
-            email: email,
-            senha: senha
-        }
-
-        const { error } = await supabase
-            .from('usuarios')
-            .update(obj)
-            .eq('id', editando)
-
-        if(error == null){
-            alert("Atualização realizada com sucesso!")
-            cancelaEdicao()
-            buscar()
-        }else{
-            alert("Dados inválidos! Verifique os campos e tente novamente...")
-        }
-
-    }
 
     function editar(objeto) {
 
@@ -232,6 +210,23 @@ function Corretores() {
 
                     </tbody>
                 </table>
+                <div class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal body text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
