@@ -12,13 +12,13 @@ function Imoveis() {
     const [endereco, alteraEndereco] = useState("")
     const [valor, alteraValor] = useState("")
 
-    
+
 
 
     const [listaImoveis, alteraListaImoveis] = useState([]);
 
 
-   async function buscar() {
+    async function buscar() {
         const { data, error } = await supabase
             .from('imoveis')
             .select()
@@ -72,69 +72,81 @@ function Imoveis() {
             <h1>Página de Imóveis </h1>
 
 
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Adicionar Imóvel</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+ Adicionar Imóvel</button>
 
-            {/* div modal */}
-            <div class="modal fade" id="exampleModal" tabindex="-1" >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title fs-5" id="exampleModalLabel">Novo imóvel </h2>
-                            <button class="btn-close" data-bs-dismiss="modal" ></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label"> Nome: </label>
-                                    <input value={(nome)} type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="e-mail" class="col-form-label"> Endereço: </label>
-                                    <textarea value={(endereco)} class="form-control" id="message-text" onChange={e => alteraEndereco(e.target.value)}></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="col-form-label"> Valor </label>
-                                    <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button onClick={salvar} class="btn btn-primary">Salvar</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+             {/* div modal */}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="exampleModalLabel">Novo Corretor</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nome:</label>
+                                <input value={(nome)} type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
+                            </div>
+                            <div class="mb-3">
+                                <label for="e-mail" class="col-form-label"> Endereço: </label>
+                                <textarea value={(endereco)} class="form-control" id="message-text" onChange={e => alteraEndereco(e.target.value)}></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label   class="col-form-label"> Valor: </label>
+                                <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button onClick={salvar} class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 
-                        </div>
                     </div>
                 </div>
             </div>
-
-        
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"> Nome </th>
-                        <th scope="col"> Endereço </th>
-                        <th scope="col"> Valor </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {
-                        listaImoveis.map(
-
-                            item => <tr>
-                                <th scope="row">{item.nome}</th>
-                                <td>{item.endereco}</td>
-                                <td>{item.valor}</td>
-                            </tr>
-                        )
-                    }
-
-                </tbody>
-            </table>
-
-
         </div>
 
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                {
+                    listaImoveis.map((item, index) => (
+                        <div class="col" key={index}>
+                            <div class="card h-100">
+
+                                <img
+                                    src="https://www.archdaily.com.br/br/979746/casa-dotta-galeria-733" //nao funcionando
+                                    class="card-img-top"
+                                    alt="Imagem do imóvel"
+                                />
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{item.nome}</h5>
+                                    <p class="card-text">
+                                        <strong>Endereço:</strong> {item.endereco} <br />
+                                        <strong>Valor:</strong> R$ {item.valor}
+                                    </p>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-light" data-bs-toggle="dropdown" >
+                                        ...
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Vendido</a></li>
+                                        <li><a class="dropdown-item" href="#">Alugado</a></li>
+                                        <li><a class="dropdown-item" href="#">Desligar</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    ))
+                }
+
+            </div >
+
+        </div>
     )
 }
 
