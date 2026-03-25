@@ -48,3 +48,33 @@
     border-radius: 100px;
 
 }
+
+.cartao2 {
+    margin: 30px 0px 0px 0px;
+    border-radius: 12px;
+    background-color: rgb(160, 8, 8);
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* HOVER SIMPLES */
+.cartao2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* LINKS */
+.cartao2 .card-link {
+    color: #dbeafe;
+}
+
+.cartao2 .card-link:hover {
+    color: white;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+

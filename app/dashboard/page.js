@@ -4,65 +4,10 @@ import "./painel_adm.css"
 export default function Dashboard() {
     return (
 
-        
+
         <table>
 
 
-            <tbody>
-
-                <tr>
-
-
-
-                    <td>
-
-                        <div type="button" className="card" style={{ width: 220 }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Total Clientes</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </td>
-
-
-
-                    <td>
-
-                        <div className="card" style={{ width: 220 }}>
-                            <div className="card-body">
-                                <h5 className="card-title">Em acompanhamento</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </td>
-
-
-                    <tr>
-
-                        <td>
-
-                            <div className="card" style={{ width: 220 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title">Investidores</h5>
-                                    <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                    <a href="#" className="card-link">Card link</a>
-                                    <a href="#" className="card-link">Another link</a>
-                                </div>
-                            </div>
-                        </td>
-
-                    </tr>
-                </tr>
-            </tbody>
-
-
 
             <tbody>
 
@@ -71,48 +16,37 @@ export default function Dashboard() {
                     <td>
 
 
-                        <div className="card cartao2 " style={{ width: 220 }}>
+                        <div className="card cartao2 " style={{ width: 300 }}>
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
+                                <h5 className="card-title"><strong>Total de clientes</strong></h5>
+                                <p className="card-text"></p>
+                            
                             </div>
                         </div>
 
                     </td>
 
-
-
                     <td>
 
 
-                        <div className="card cartao2 " style={{ width: 220 }}>
+                        <div className="card cartao2 " style={{ width: 300 }}>
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
+                                <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
+                                <p className="card-text"></p>
+                            
                             </div>
                         </div>
 
                     </td>
 
-
-
-
                     <td>
 
 
-                        <div className="card cartao2 " style={{ width: 220 }}>
+                        <div className="card cartao2 " style={{ width: 300 }}>
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
+                                <h5 className="card-title"><strong>Total de imóveis</strong></h5>
+                                <p className="card-text"></p>
+                            
                             </div>
                         </div>
 
@@ -120,40 +54,57 @@ export default function Dashboard() {
                 </tr>
 
             </tbody>
-<table class="table tabelausuarios">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
+
+            <tbody>
+                <tr>
+                    <td>
+
+
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>30 dias sem contato</strong></h5>
+                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                               
+                            </div>
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>60 dias sem contato</strong></h5>
+                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                
+                            </div>
+                        </div>
+
+                    </td>
+                    
+                    <td>
+
+
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>90 dias sem contato</strong></h5>
+                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
 
         </table>
-      
-
 
     )
 }
