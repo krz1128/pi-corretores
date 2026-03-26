@@ -1,3 +1,4 @@
+
 'use client'
 import "./cadastro_empreendimento.css"
 import { useEffect, useState } from "react";
@@ -13,10 +14,19 @@ export default function CadastroEmpreendimento() {
     const [unidades, alteraUnidades] = useState("")
     const [condominio, alteraCondominio] = useState("")
 
+    const [idEditando, alteraIdEditando] = useState("")
+    const [construtoraEdit, alteraConstrutoraEdit] = useState("")
+    const [tipoimovelEdit, alteraTipoimovelEdit] = useState("")
+    const [valorEdit, alteraValorEdit] = useState("")
+    const [pagamentoEdit, alteraPagamentoEdit] = useState("")
+    const [prazoEdit, alteraPrazoEdit] = useState("")
+    const [unidadesEdit, alteraUnidadesEdit] = useState("")
+    const [condominioEdit, alteraCondominioEdit] = useState("")
+
     const [empreendimentos, alteraCadastroEmpreendimento] = useState([]);
 
 
-       async function buscar() {
+    async function buscar() {
         const { data, error } = await supabase
             .from('empreendimentos')
             .select()
@@ -33,19 +43,7 @@ export default function CadastroEmpreendimento() {
             prazo_entrega: prazo,
             unidades_disponiveis: unidades,
             condominio: condominio
-
         }
-
-       
-        async function acoes(id){
-        const opcao = confirm("Tem certeza que deseja excluir o item?")
-
-        if(opcao == false){
-            return
-        } //ALTERAR ESSE BOTÃO POSTERIORMENTE
-
-        const response = await supabase.from('empreendimentos').delete().eq('id', id)
-    }
 
         const { error } = await supabase
             .from('empreendimentos')
@@ -68,6 +66,54 @@ export default function CadastroEmpreendimento() {
         }
     }
 
+    function abrirEdicao(item) {
+        alteraIdEditando(item.id)
+        alteraConstrutoraEdit(item.construtora)
+        alteraTipoimovelEdit(item.tipo_imovel)
+        alteraValorEdit(item.valor_empreendimento)
+        alteraPagamentoEdit(item.forma_pagamento)
+        alteraPrazoEdit(item.prazo_entrega)
+        alteraUnidadesEdit(item.unidades_disponiveis)
+        alteraCondominioEdit(item.condominio)
+    }
+
+    async function editar() {
+        const objeto = {
+            construtora: construtoraEdit,
+            tipo_imovel: tipoimovelEdit,
+            valor_empreendimento: valorEdit,
+            forma_pagamento: pagamentoEdit,
+            prazo_entrega: prazoEdit,
+            unidades_disponiveis: unidadesEdit,
+            condominio: condominioEdit
+        }
+
+        const { error } = await supabase
+            .from('empreendimentos')
+            .update(objeto)
+            .eq('id', idEditando)
+        console.log(error)
+
+        if (error == null) {
+            alert("Empreendimento atualizado com sucesso")
+            location.reload()
+        }
+        else {
+            alert("Dados inválidos, verifique os campos e tente novamente.")
+        }
+    }
+
+    async function acoes(id) {
+        const opcao = confirm("Tem certeza que deseja excluir o item?")
+
+        if (opcao == false) {
+            return
+        }
+
+        const response = await supabase.from('empreendimentos').delete().eq('id', id)
+        location.reload()
+    }
+
     useEffect(() => {
         buscar()
     }, [])
@@ -87,7 +133,6 @@ export default function CadastroEmpreendimento() {
             >
                 Novo empreendimento
             </button>
-
             <div
                 className="modal fade"
                 id="exampleModal"
@@ -204,6 +249,115 @@ export default function CadastroEmpreendimento() {
                     </div>
                 </div>
             </div>
+            <div
+                className="modal fade"
+                id="modalEdicao"
+                tabIndex="-1"
+                aria-labelledby="modalEdicaoLabel"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="modalEdicaoLabel">
+                                Editar empreendimento
+                            </h1>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            />
+                        </div>
+
+                        <div className="modal-body">
+                            <form>
+                                <div className="mb-1">
+                                    <label className="col-form-label">Construtora:</label>
+                                    <input
+                                        onChange={e => alteraConstrutoraEdit(e.target.value)}
+                                        value={construtoraEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Tipo de imóvel:</label>
+                                    <input
+                                        onChange={e => alteraTipoimovelEdit(e.target.value)}
+                                        value={tipoimovelEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Valor:</label>
+                                    <input
+                                        onChange={e => alteraValorEdit(e.target.value)}
+                                        value={valorEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Forma de pagamento:</label>
+                                    <input
+                                        onChange={e => alteraPagamentoEdit(e.target.value)}
+                                        value={pagamentoEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Prazo de entrega:</label>
+                                    <input
+                                        onChange={e => alteraPrazoEdit(e.target.value)}
+                                        value={prazoEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Unidades disponíveis:</label>
+                                    <input
+                                        onChange={e => alteraUnidadesEdit(e.target.value)}
+                                        value={unidadesEdit}
+                                        type="text"
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="mb-1">
+                                    <label className="col-form-label">Condomínio:</label>
+                                    <textarea
+                                        onChange={e => alteraCondominioEdit(e.target.value)}
+                                        value={condominioEdit}
+                                        className="form-control"
+                                    ></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Cancelar
+                            </button>
+                            <button onClick={editar} type="button" className="btn btn-primary">
+                                Salvar alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <h2>Empreendimentos</h2>
@@ -233,7 +387,16 @@ export default function CadastroEmpreendimento() {
                                 <td>{item.prazo_entrega}</td>
                                 <td>{item.unidades_disponiveis}</td>
                                 <td>{item.condominio}</td>
-                                <td><button onClick={ ()=> acoes(item.id) }>AÇÕES</button></td>
+                                <td>
+                                    <button
+                                        onClick={() => abrirEdicao(item)}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEdicao"
+                                    >
+                                        EDITAR
+                                    </button>
+                                    <button onClick={() => acoes(item.id)}>EXCLUIR</button>
+                                </td>
                             </tr>
                         )
                     }

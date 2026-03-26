@@ -10,6 +10,7 @@ import "./clientes.css"
   const [renda, alteraRenda] = useState()
   const [email, alteraEmail] = useState("")
   const [telefone, alteraTelefone] = useState()
+  const [contato, alteraContato] = useState()
 
   const [clientes, alteraListaClientes] = useState([]);
 
@@ -21,17 +22,22 @@ import "./clientes.css"
         alteraListaClientes(data)
     }
 
-  function salvar(e) {
+  async function salvar() {
     const objeto = {
-      Nome: nome,
-      Renda: renda,
-      Email: email,
-      Telefone: telefone,
-      Contato: ultimo_contato
+      nome: nome,
+      renda: renda,
+      email: email,
+      telefone: telefone
     }
 
-    alteraListaClientes(clientes.concat(objeto))
-  }
+    const { error } = await supabase
+        .from('clientes')
+        .insert(objeto)
+
+        alteraListaClientes(clientes.concat(objeto))
+}
+  
+
 
    useEffect(() => {
         buscar()
@@ -80,8 +86,8 @@ import "./clientes.css"
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onClick={salvar} >Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" onClick={salvar} >Salvar</button>
             </div>
           </div>
         </div>
