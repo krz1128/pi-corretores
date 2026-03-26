@@ -74,38 +74,38 @@ function Imoveis() {
 
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+ Adicionar Imóvel</button>
 
-             {/* div modal */}
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title fs-5" id="exampleModalLabel">Novo Corretor</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Nome:</label>
-                                <input value={(nome)} type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
-                            </div>
-                            <div class="mb-3">
-                                <label for="e-mail" class="col-form-label"> Endereço: </label>
-                                <textarea value={(endereco)} class="form-control" id="message-text" onChange={e => alteraEndereco(e.target.value)}></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label   class="col-form-label"> Valor: </label>
-                                <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button onClick={salvar} class="btn btn-primary">Salvar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            {/* div modal */}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Novo Corretor</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Nome:</label>
+                                    <input value={(nome)} type="text" class="form-control" id="recipient-name" onChange={e => alteraNome(e.target.value)} />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="e-mail" class="col-form-label"> Endereço: </label>
+                                    <textarea value={(endereco)} class="form-control" id="message-text" onChange={e => alteraEndereco(e.target.value)}></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label"> Valor: </label>
+                                    <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button onClick={salvar} class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -129,14 +129,12 @@ function Imoveis() {
                                 </div>
 
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-light" data-bs-toggle="dropdown" >
-                                        ...
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Vendido</a></li>
-                                        <li><a class="dropdown-item" href="#">Alugado</a></li>
-                                        <li><a class="dropdown-item" href="#">Desligar</a></li>
-                                    </ul>
+                                    <select class="form-select">
+                                        <option value="">...</option>
+                                        <option value="vendido">Vendido</option>
+                                        <option value="alugado">Alugado</option>
+                                        <option value="desligar">Desligar</option>
+                                    </select>
                                 </div>
 
                             </div>
