@@ -1,24 +1,46 @@
 'use client'
+import supabase from "../conexao/supabase"
 import "./login.css"
-import Link from "next/link"
-import { createClient, FunctionRegion } from '@supabase/supabase-js'
 import { useEffect, useState } from "react"
-const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
+import Link from "next/link";
 
 
- export default function Login() {
+export default function Login() {
 
-     const [nome, alteraNome] = useState("")
+    const [nome, alteraNome] = useState("")
     const [senha, alteraSenha] = useState("")
+
+    const { login, alteraLogin } = useState([])
+
+
+    async function autenticar() {
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: nome,
+            password: senha,
+        })
+
+
+        if (data.user == null) {
+            alert("Dados inválidos...")
+            return
+        }
+
+        alert("Autenticado com sucesso!")
+        localStorage.setItem("id_usuario", data.user.id)
+
+
+    }
+
 
     // função para buscar a informação do banco de dados 
     async function buscar() {
         const { data, error } = await supabase.from('usuarios').select()
 
         console.log(data)
-        alteraLivros(data)
+        alteraLogin(data)
     }
-    
+
 
     // Função para salvar
     async function salvar(e) {
@@ -32,7 +54,7 @@ const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_pu
         console.log(error)
 
         if (error == null) {
-            alert("Livro cadastrado com sucesso!")
+            alert("Cadastrado com sucesso!")
             alteraNome("")
             alteraSenha("")
         } else {
@@ -50,18 +72,16 @@ const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_pu
         <div>
             <div class="loginCadastro"> Faça o Login</div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+                <input onChange={e => alteraNome(e.target.value)} type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
 
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Senha"/>
+                <input onChange={e => alteraSenha(e.target.value)} type="password" class="form-control" id="floatingPassword" placeholder="Senha" />
 
             </div>
-            
-             <Link href="dashboard">  <button type="button" class="btn btn-primary btn-sm">Entrar</button> </Link>
 
 
+            <button type="button" class="btn btn-primary btn-sm" onClick={autenticar}>Entrar</button>
         </div>
-       
     )
 }
