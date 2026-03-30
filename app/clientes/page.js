@@ -10,6 +10,7 @@ import "./clientes.css"
   const [renda, alteraRenda] = useState()
   const [email, alteraEmail] = useState("")
   const [telefone, alteraTelefone] = useState()
+  const [observacao, alteraObservacao] = useState()
   const [contato, alteraContato] = useState()
 
   const [clientes, alteraListaClientes] = useState([]);
@@ -27,7 +28,8 @@ import "./clientes.css"
       nome: nome,
       renda: renda,
       email: email,
-      telefone: telefone
+      telefone: telefone,
+      observacao: observacao,
     }
 
     const { error } = await supabase
@@ -36,6 +38,18 @@ import "./clientes.css"
 
         alteraListaClientes(clientes.concat(objeto))
 }
+
+    function formataData(data){
+        let data_formatada = new Date(data)
+        data_formatada = data_formatada.toLocaleDateString()
+        return data_formatada
+    }
+
+    function formataHoras(horas){
+        let horas_formatadas = new Date(horas)
+        horas_formatadas = horas_formatadas.toLocaleTimeString()
+        return horas_formatadas
+    }
   
 
 
@@ -83,6 +97,11 @@ import "./clientes.css"
                   <input type="number" class="form-control" onChange={e => alteraTelefone(e.target.value)} />
                   <div id="" class="form-number"></div>
                 </div>
+                <div class="mb-3">
+                  <label class="form-label">Digite uma observação (NÃO OBRIGATÓRIO):</label>
+                  <input type="text" class="form-control" onChange={e => alteraObservacao(e.target.value)} />
+                  <div id="" class="form-number"></div>
+                </div>
               </form>
             </div>
             <div class="modal-footer">
@@ -101,6 +120,7 @@ import "./clientes.css"
             <th scope="col">E-mail</th>
             <th scope="col">Telefone</th>
             <th scope="col">Último contato</th>
+            <th scope="col">Observação</th>
           </tr>
         </thead>
         <tbody>
@@ -112,7 +132,8 @@ import "./clientes.css"
                 <td>R${item.renda}</td>
                 <td>{item.email}</td>
                 <td>{item.telefone}</td>
-                <td>{item.ultimo_contato}</td>
+                <td>{ formataData(item.ultimo_contato)}</td>
+                <td>{item.observacao}</td>
               </tr>
             )
           }
