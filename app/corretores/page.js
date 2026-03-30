@@ -13,7 +13,6 @@ export default function Corretores() {
     const [lista, alteraLista] = useState([])
 
     const [nome, alteraNome] = useState("")
-    const [email, alteraEmail] = useState("")
     const [telefone, alteraTelefone] = useState("")
     const [cpf, alteraCpf] = useState("")
     
@@ -47,12 +46,12 @@ export default function Corretores() {
 
     async function salvar() {
 
-        if (!nome || !email || !cpf) {
+        if (!nome || !cpf) {
             alert("Preencha todos os campos")
             return
         }
 
-        const obj = { nome, email, cpf }
+        const obj = { nome, cpf }
 
         if (editandoId) {
             await supabase
@@ -70,7 +69,6 @@ export default function Corretores() {
         }
 
         alteraNome("")
-        alteraEmail("")
         alteraCpf("")
         alteraEditandoId(false)
         alteraVerModal(false)
@@ -91,7 +89,6 @@ export default function Corretores() {
 
     function editar(item) {
         alteraNome(item.nome)
-        alteraEmail(item.email)
         alteraCpf(item.cpf)
         alteraEditandoId(item.id)
         alteraVerModal(true)
@@ -113,7 +110,6 @@ export default function Corretores() {
             <button
                 onClick={() => {
                     alteraNome("")
-                    alteraEmail("")
                     alteraCpf("")
                     alteraTelefone("")
                     alteraEditandoId(null)
@@ -129,7 +125,6 @@ export default function Corretores() {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
                         <th>CPF</th>
                         <th>Telefone</th>
                         <th></th>
@@ -140,7 +135,6 @@ export default function Corretores() {
                     {lista.map(item => (
                         <tr key={item.id}>
                             <td>{item.nome}</td>
-                            <td>{item.email}</td>
                             <td>{item.cpf}</td>
                             <td>{item.telefone}</td>
                             <td>
@@ -177,13 +171,6 @@ export default function Corretores() {
                                         placeholder="Nome"
                                         value={nome}
                                         onChange={e => alteraNome(e.target.value)}
-                                        className="form-control mb-2"
-                                    />
-
-                                    <input
-                                        placeholder="Email"
-                                        value={email}
-                                        onChange={e => alteraEmail(e.target.value)}
                                         className="form-control mb-2"
                                     />
 

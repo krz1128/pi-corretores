@@ -3,13 +3,16 @@ import supabase from "../conexao/supabase"
 import "./login.css"
 import { useEffect, useState } from "react"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+
 
 
 export default function Login() {
 
     const [nome, alteraNome] = useState("")
     const [senha, alteraSenha] = useState("")
-
+    const router = useRouter();
     const { login, alteraLogin } = useState([])
 
 
@@ -29,6 +32,7 @@ export default function Login() {
         alert("Autenticado com sucesso!")
         localStorage.setItem("id_usuario", data.user.id)
 
+        router.push("/dashboard")
 
     }
 
