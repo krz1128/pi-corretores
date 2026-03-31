@@ -1,36 +1,56 @@
 'use client'
-import Link from "next/link"
+import supabase from "../conexao/supabase"
 import "./cadastro_usuario.css"
-import { useEffect, useState } from "react"
-import { createClient } from '@supabase/supabase-js'
-const supabase = createClient( 'https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
+import { useState } from "react"
 
 
 
-export default function CadastroUsuario() {
-
+export default function cadastroUsuario() {
 
     const [nome, alteraNome] = useState("")
     const [email, alteraEmail] = useState("")
     const [telefone, alteraTelefone] = useState("")
+    const [cpf, alteraCPF] = useState("")
     const [senha, alteraSenha] = useState("")
 
 
     // Função para salvar
     async function salvar(e) {
-        e.preventDefault()
-        const objeto = {
-            nome: nome,
+         e.preventDefault()
+
+          if (!nome || !email || !senha) {
+            alert("Preencha todos os campos")
+            return
+        }
+        
+        //CADASTRAR NO AUTHENTICATION DO SUPABASE
+console.log("aaaaaaaaaa")
+        const { data, error } = await supabase.auth.signUp({
             email: email,
-            senha: senha
+            password: senha
+        })
+        console.log(error)
+        if(data == null){
+            alert("Dados inválidos...")
+            return
         }
 
-        const { error } = await supabase
+
+        const objeto = {
+            id: data.user.id,
+            nome: nome,
+            cpf: cpf,
+            telefone: telefone,
+            email:email
+        }
+
+        const  resposta  = await supabase
             .from('usuarios')
             .insert(objeto)
+
         console.log(error)
 
-        if (error == null) {
+        if (resposta.error == null) {
             alert("Usuário cadastrado com sucesso!")
             alteraNome("")
             alteraEmail("")
@@ -57,14 +77,14 @@ export default function CadastroUsuario() {
                         </div>
 
 
-                        <form onsubmit={salvar}>
+                        <form onSubmit={salvar}>
 
 
-
+        
                             <label>
                                 Nome completo:
                                 <br />
-                                <input value={(nome)} onChange={e => alteraNome(e.target.value)}required class="inputNome" />
+                                <input value={(nome)} onChange={e => alteraNome(e.target.value)} required class="inputNome" />
                             </label>
 
                             <br /><br />
@@ -72,19 +92,26 @@ export default function CadastroUsuario() {
                             <label>
                                 Email:
                                 <br />
-                                <input value={(email)}  onChange={e => alteraEmail(e.target.value)}required class="inputEmail" />
+                                <input value={(email)} onChange={e => alteraEmail(e.target.value)} required class="inputEmail" />
                             </label>
 
 
                             <br /><br />
 
-                             <label>
+                            <label>
                                 Telefone:
                                 <br />
-                                <input value={(telefone)}  onChange={e => alteraTelefone(e.target.value)}required class="inputTelefone" />
+                                <input value={(telefone)} onChange={e => alteraTelefone(e.target.value)} required class="inputTelefone" />
                             </label>
 
-                            <br/> <br/>
+                            <br /><br />
+                            <label>
+                                CPF:
+                                <br />
+                                <input value={(cpf)} onChange={e => alteraCPF(e.target.value)} required class="inputTelefone" />
+                            </label>
+
+                            <br /> <br />
 
                             <label>
                                 Crie sua senha:
@@ -96,7 +123,7 @@ export default function CadastroUsuario() {
                             <br /><br />
 
 
-                            <button onClick={salvar} type="salvar"> Criar Login</button>
+                            <button> Criar Login</button>
 
 
 
@@ -110,7 +137,7 @@ export default function CadastroUsuario() {
 
             </div>
 
-    
+
         </div>
 
 
