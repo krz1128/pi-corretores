@@ -13,6 +13,9 @@ function Imoveis() {
     const [valor, alteraValor] = useState("")
     const [status, alteraStatus] = useState("")
     const [editando, alteraEditando] = useState(null)
+    const [foto, alteraFoto] = useState("")
+
+
 
     const [listaImoveis, alteraListaImoveis] = useState([]);
 
@@ -134,6 +137,15 @@ function Imoveis() {
                                     <label class="col-form-label"> Valor: </label>
                                     <textarea value={(valor)} class="form-control" id="message-text" onChange={e => alteraValor(e.target.value)}></textarea>
                                 </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label"> URL da Imagem: </label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        value={foto}
+                                        onChange={e => alteraFoto(e.target.value)}
+                                    />
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -154,7 +166,10 @@ function Imoveis() {
 
                                 <img className="card-img-top"
                                     src={item.foto}
-                                    alt="Imagem do imóvel" />
+                                    alt="Imagem do imóvel"
+                                    style={{ height: "200px", objectFit: "cover" }} />
+                                {/* //height para deixar fotos do mesmo tamanho, objectFit para não esticar// */}
+
 
                                 <div class="card-body">
                                     <h5 class="card-title">{item.nome}</h5>
