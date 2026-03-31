@@ -11,12 +11,30 @@ function Imoveis() {
     const [nome, alteraNome] = useState("")
     const [endereco, alteraEndereco] = useState("")
     const [valor, alteraValor] = useState("")
-
-
-
+    const [status, alteraStatus] = useState("")
+    const [editando, alteraEditando] = useState(null)
 
     const [listaImoveis, alteraListaImoveis] = useState([]);
 
+
+    async function buscaUsuario() {
+        const { data, error } = await supabase
+            .from("usuarios")
+            .select()
+            .eq("id", id_usuario)
+
+        alteraUsuario(data[0])
+
+    }
+
+
+    function editar(objeto) {
+
+        alteraEditando(objeto.id)
+
+        alteraStatus(objeto.status)
+
+    }
 
     async function buscar() {
         const { data, error } = await supabase
@@ -53,8 +71,28 @@ function Imoveis() {
 
     }
 
+    function cancelaEdicao() {
+        alteraEditando(null)
 
+        alteraStatus("")
+    }
 
+    async function atualizar(id, novoStatus) {
+
+        const { error } = await supabase
+            .from('imoveis')
+            .update({ status: novoStatus })
+            .eq('id', id)
+
+        console.log(error)
+
+        if (error == null) {
+            alert("Atualizado com sucesso!")
+            buscar()
+        } else {
+            alert("Erro ao atualizar")
+        }
+    }
 
 
     useEffect(() => {
@@ -114,11 +152,9 @@ function Imoveis() {
                         <div class="col" key={index}>
                             <div class="card h-100">
 
-                                <img
-                                    src="https://www.archdaily.com.br/br/979746/casa-dotta-galeria-733" //nao funcionando
-                                    class="card-img-top"
-                                    alt="Imagem do imóvel"
-                                />
+                                <img className="card-img-top"
+                                    src={item.foto}
+                                    alt="Imagem do imóvel" />
 
                                 <div class="card-body">
                                     <h5 class="card-title">{item.nome}</h5>
@@ -128,14 +164,18 @@ function Imoveis() {
                                     </p>
                                 </div>
 
+
                                 <div class="btn-group" role="group">
-                                    <select class="form-select">
+                                    <select onChange={(e) => atualizar(item.id, e.target.value)} class="form-select">
                                         <option value="">...</option>
                                         <option value="vendido">Vendido</option>
                                         <option value="alugado">Alugado</option>
                                         <option value="desligar">Desligar</option>
                                     </select>
                                 </div>
+                                <div></div>
+
+
 
                             </div>
                         </div>
