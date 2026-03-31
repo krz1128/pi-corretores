@@ -53,10 +53,31 @@ function Imoveis() {
         const objeto = {
             nome: nome,
             endereco: endereco,
-            valor: valor
+            valor: valor,
+            foto: foto
         }
 
+        async function excluir(id) {
 
+            const opcao = confirm("Tem certeza que deseja excluir?")
+
+            if (opcao == false) {
+                return
+            }
+
+            const { error } = await supabase
+                .from('imoveis')
+                .delete()
+                .eq('id', id)
+
+            if (error == null) {
+                alert("Excluído com sucesso!")
+                buscar()
+            } else {
+                alert("Erro ao excluir")
+            }
+
+        }
 
         const { error } = await supabase.from('imoveis').insert(objeto)
         console.log(error)
@@ -66,6 +87,7 @@ function Imoveis() {
             alteraNome("")
             alteraEndereco("")
             alteraValor("")
+            alteraFoto("")
 
             buscar()
         } else {
@@ -82,12 +104,15 @@ function Imoveis() {
 
     async function atualizar(id, novoStatus) {
 
+        if (novoStatus == "Desligado") {
+            excluir(id)
+            return
+        }
+
         const { error } = await supabase
             .from('imoveis')
             .update({ status: novoStatus })
-            .eq('id', id)
-
-        console.log(error)
+            .eq('id', id)   
 
         if (error == null) {
             alert("Atualizado com sucesso!")
@@ -161,7 +186,7 @@ function Imoveis() {
 
                 {
                     listaImoveis.map((item, index) => (
-                        <div class="col" key={index}>
+                        <div class="col" key={item.id}>
                             <div class="card h-100">
 
                                 <img className="card-img-top"
@@ -185,7 +210,7 @@ function Imoveis() {
                                         <option value="">...</option>
                                         <option value="vendido">Vendido</option>
                                         <option value="alugado">Alugado</option>
-                                        <option value="desligar">Desligar</option>
+                                        <option value="desligado">Desligado</option>
                                     </select>
                                 </div>
                                 <div></div>
