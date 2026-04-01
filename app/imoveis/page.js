@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-
+import "./imoveis.css"
 import { createClient } from '@supabase/supabase-js'
 const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
 
@@ -180,10 +180,12 @@ function Imoveis() {
                             <div class="col" key={item.id}>
                                 <div class="card h-100">
 
-                                    <img className="card-img-top"
+                                    <img
+                                        className="card-img-top"
                                         src={item.foto}
                                         alt="Imagem do imóvel"
-                                        style={{ height: "200px", objectFit: "cover" }} />
+                                        style={{ height: "200px", objectFit: "cover" }}
+                                    />
 
                                     <div class="card-body">
                                         <h5 class="card-title">{item.nome}</h5>
