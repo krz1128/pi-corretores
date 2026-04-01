@@ -1,106 +1,135 @@
-import Link from "next/link"
-import "./painel_adm.css"
+"use client"
+import { useEffect, useState } from "react";
+import "./painel_adm.css";
+import supabase from "../conexao/supabase";
 
 export default function Dashboard() {
+
+    const [clientes, alteraClientes] = useState(0);
+    const [empreendimentos, alteraEmpreendimentos] = useState(0);
+    const [imoveis, alteraImoveis] = useState(0);
+    const [vendidos, alteraVendidos] = useState(0);
+    const [alugados, alteraAlugados] = useState(0);
+    const [desligados, alteraDesligados] = useState(0);
+
+
+    useEffect(() => {
+        async function fetchData() {
+
+            const { count: totalClientes } = await supabase
+                .from("clientes")
+                .select("*", { count: "exact", head: true });
+
+            const { count: totalEmpreendimentos } = await supabase
+                .from("empreendimentos")
+                .select("*", { count: "exact", head: true });
+
+            const { count: totalImoveis } = await supabase
+                .from("imoveis")
+                .select("*", { count: "exact", head: true });
+
+            const { count: totalVendidos } = await supabase
+                .from("imoveis")
+                .select("*", { count: "exact", head: true })
+                .eq("status", "vendido");
+
+            const { count: totalAlugados } = await supabase
+                .from("imoveis")
+                .select("*", { count: "exact", head: true })
+                .eq("status", "alugado");
+
+            const { count: totalDesligados } = await supabase
+                .from("imoveis")
+                .select("*", { count: "exact", head: true })
+                .eq("status", "desligado");
+
+            const { data: imoveisData } = await supabase
+                .from("imoveis")
+                .select("id, preco")
+                .order("preco", { ascending: true });
+
+            alteraClientes(totalClientes || 0);
+            alteraEmpreendimentos(totalEmpreendimentos || 0);
+            alteraImoveis(totalImoveis || 0);
+            alteraVendidos(totalVendidos || 0);
+            alteraAlugados(totalAlugados || 0);
+            alteraDesligados(totalDesligados || 0);
+
+        }
+
+        fetchData();
+    }, []);
+
     return (
 
-        <table>
+            <table>
 
-            <tbody>
+                <tbody>
+                    <tr>
 
-                <tr>
-
-                    <td>
-
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Total de clientes</strong></h5>
-                                <p className="card-text"></p>
-                            
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Total de clientes</strong></h5>
+                                    <p className="card-text">{clientes}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-
-                    <td>
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
-                                <p className="card-text"></p>
-                            
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
+                                    <p className="card-text">{empreendimentos}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-
-                    <td>
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Total de imóveis</strong></h5>
-                                <p className="card-text"></p>
-                            
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Total de imóveis</strong></h5>
+                                    <p className="card-text">{imoveis}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-                </tr>
+                    </tr>
+                </tbody>
 
-            </tbody>
+                <tbody>
+                    <tr>
 
-            <tbody>
-                <tr>
-                    <td>
-
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Imóveis vendidos</strong></h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                               
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Imóveis vendidos</strong></h5>
+                                    <p className="card-text">{vendidos}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-
-
-                    <td>
-
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Imóveis alugados</strong></h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Imóveis alugados</strong></h5>
+                                    <p className="card-text">{alugados}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-                    
-                    <td>
-
-
-                        <div className="card cartao2 " style={{ width: 300 }}>
-                            <div className="card-body">
-                                <h5 className="card-title"><strong>Imóveis desligados </strong></h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                
+                        <td>
+                            <div className="card cartao2 " style={{ width: 300 }}>
+                                <div className="card-body">
+                                    <h5 className="card-title"><strong>Imóveis desligados</strong></h5>
+                                    <p className="card-text">{desligados}</p>
+                                </div>
                             </div>
-                        </div>
+                        </td>
 
-                    </td>
-                </tr>
+                    </tr>
+                </tbody>
 
-            </tbody>
-
-
-        </table>
-
-    )
+            </table>
+)
 }
-
