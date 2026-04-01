@@ -12,8 +12,12 @@ export default function Dashboard() {
     const [alugados, alteraAlugados] = useState(0);
     const [desligados, alteraDesligados] = useState(0);
 
+    const [listaImoveis, setListaImoveis] = useState([]);
+
 
     useEffect(() => {
+
+        
         async function fetchData() {
 
             const { count: totalClientes } = await supabase
@@ -62,74 +66,80 @@ export default function Dashboard() {
 
     return (
 
-            <table>
+        <table>
 
-                <tbody>
-                    <tr>
+            <tbody>
+                <tr>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Total de clientes</strong></h5>
-                                    <p className="card-text">{clientes}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Total de clientes</strong></h5>
+                                <p className="card-text">{clientes}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
-                                    <p className="card-text">{empreendimentos}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
+                                <p className="card-text">{empreendimentos}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Total de imóveis</strong></h5>
-                                    <p className="card-text">{imoveis}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Total de imóveis</strong></h5>
+                                <p className="card-text">{imoveis}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                    </tr>
-                </tbody>
+                </tr>
+            </tbody>
 
-                <tbody>
-                    <tr>
+            <tbody>
+                <tr>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Imóveis vendidos</strong></h5>
-                                    <p className="card-text">{vendidos}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Imóveis vendidos</strong></h5>
+                                <p className="card-text">{vendidos}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Imóveis alugados</strong></h5>
-                                    <p className="card-text">{alugados}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Imóveis alugados</strong></h5>
+                                <p className="card-text">{alugados}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                        <td>
-                            <div className="card cartao2 " style={{ width: 300 }}>
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>Imóveis desligados</strong></h5>
-                                    <p className="card-text">{desligados}</p>
-                                </div>
+                    <td>
+                        <div className="card cartao2 " style={{ width: 300 }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><strong>Imóveis desligados</strong></h5>
+                                <p className="card-text">{desligados}</p>
                             </div>
-                        </td>
+                        </div>
+                    </td>
 
-                    </tr>
-                </tbody>
+                </tr>
+            </tbody>
+            <select class="form-select w-25 mb-3">
+                <option>Ordenar por</option>
+                <option value="maior">Mais caro</option>
+                <option value="menor">Mais barato</option>
+            </select>
+        </table>
 
-            </table>
-)
+
+    )
 }
