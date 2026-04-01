@@ -4,10 +4,7 @@ import "./painel_adm.css"
 export default function Dashboard() {
     return (
 
-
         <table>
-
-
 
             <tbody>
 
@@ -28,7 +25,6 @@ export default function Dashboard() {
 
                     <td>
 
-
                         <div className="card cartao2 " style={{ width: 300 }}>
                             <div className="card-body">
                                 <h5 className="card-title"><strong>Total de empreendimentos</strong></h5>
@@ -40,7 +36,6 @@ export default function Dashboard() {
                     </td>
 
                     <td>
-
 
                         <div className="card cartao2 " style={{ width: 300 }}>
                             <div className="card-body">
