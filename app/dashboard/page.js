@@ -133,11 +133,6 @@ export default function Dashboard() {
 
                 </tr>
             </tbody>
-            <select class="form-select w-25 mb-3">
-                <option>Ordenar por</option>
-                <option value="maior">Mais caro</option>
-                <option value="menor">Mais barato</option>
-            </select>
         </table>
 
 
