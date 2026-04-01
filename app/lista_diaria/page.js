@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react"
 import supabase from "../conexao/supabase"
 
-export default function ListaClientes(){
+export default function ListaClientes() {
 
-    const [ listaClientes, alteraListaClientes ] = useState([])
+    const [listaClientes, alteraListaClientes] = useState([])
 
-    async function buscaClientes(){
+    async function buscaClientes() {
 
         let dataPesquisa = new Date();
         dataPesquisa.setDate(dataPesquisa.getDate() - 30)
@@ -17,13 +17,13 @@ export default function ListaClientes(){
             .from('clientes')
             .select()
             .gt('ultimo_contato', '1950-01-01 00:00:00')
-            .lte('ultimo_contato', dataPesquisa+' 23:59:59')
+            .lte('ultimo_contato', dataPesquisa + ' 23:59:59')
 
         alteraListaClientes(data)
 
     }
 
-    async function concluirCliente(id){
+    async function concluirCliente(id) {
 
         let dataHoje = new Date()
         dataHoje = dataHoje.toISOString()
@@ -33,16 +33,16 @@ export default function ListaClientes(){
         }
 
         const { error } = await supabase
-        .from('clientes')
-        .update(obj)
-        .eq("id", id)
+            .from('clientes')
+            .update(obj)
+            .eq("id", id)
 
         alert("Atendimento realizdo com sucesso!")
         buscaClientes()
 
-    }   
+    }
 
-    function diasSemContato(data){
+    function diasSemContato(data) {
         let contato = new Date(data)
         let hoje = new Date()
 
@@ -53,11 +53,11 @@ export default function ListaClientes(){
 
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         buscaClientes()
     }, [])
 
-    return(
+    return (
         <div>
             <h1>Lista diária</h1>
             <p>Clientes a mais de 30 dias sem contato</p>
@@ -67,20 +67,20 @@ export default function ListaClientes(){
 
                 {
                     listaClientes.map(
-                        item => 
+                        item =>
                             <div class="col">
-                                <div class="card text-center mx-3" style={{maxWidth: 400}}>
+                                <div class="card text-center mx-3" style={{ maxWidth: 400 }}>
                                     <div class="card-header">
                                         <i class="bi bi-clock"></i> <strong>{diasSemContato(item.ultimo_contato)}</strong> Dias sem contato
                                     </div>
                                     <div class="card-body my-3">
                                         <h5 class="card-title">
                                             {/* <img width={35} src={"https://ui-avatars.com/api/?name="+item.nome+"&background=random&rounded=true"} className="me-3" /> */}
-                                            <img width={35} src={"https://api.dicebear.com/9.x/initials/svg?seed=$"+item.nome+"&backgroundType=gradientLinear"} className="me-3 rounded-circle" />
+                                            <img width={35} src={"https://api.dicebear.com/9.x/initials/svg?seed=$" + item.nome + "&backgroundType=gradientLinear"} className="me-3 rounded-circle" />
                                             <strong>{item.nome}</strong>
                                         </h5>
-                                        <br/>
-                                        
+                                        <br />
+
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item"><i class="bi bi-telephone"></i> {item.telefone} </li>
                                             <li class="list-group-item"><i class="bi bi-envelope"></i> {item.email}</li>
@@ -90,7 +90,7 @@ export default function ListaClientes(){
 
                                     </div>
                                     <div class="card-footer text-body-secondary">
-                                        <button onClick={()=> concluirCliente(item.id)} class="btn btn-primary"><i class="bi bi-check-lg"></i> Concluir</button>
+                                        <button onClick={() => concluirCliente(item.id)} class="btn btn-primary"><i class="bi bi-check-lg"></i> Concluir</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ export default function ListaClientes(){
                 }
 
             </div>
-              
+
 
         </div>
     )

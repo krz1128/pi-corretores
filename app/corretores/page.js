@@ -15,7 +15,7 @@ export default function Corretores() {
     const [nome, alteraNome] = useState("")
     const [telefone, alteraTelefone] = useState("")
     const [cpf, alteraCpf] = useState("")
-    
+
     const [editandoId, alteraEditandoId] = useState(null)
     const [usuario, alteraUsuario] = useState(null)
 
@@ -31,20 +31,13 @@ export default function Corretores() {
     }, [])
 
 
-    async function buscarUsuario() {
-
-        const { data, error } = await supabase
-            .from("usuarios")
-            .select()
-            .eq("id", usuario)
-
-        alteraUsuario(data[0])
-
-    }
-
-    
 
     async function salvar() {
+
+         if (!user) {
+        alert("Faça login para continuar")
+        return
+    }
 
         if (!nome || !cpf) {
             alert("Preencha todos os campos")
@@ -70,7 +63,7 @@ export default function Corretores() {
 
         alteraNome("")
         alteraCpf("")
-        alteraEditandoId(false)
+        alteraEditandoId(null)
         alteraVerModal(false)
 
         buscar()
@@ -103,7 +96,7 @@ export default function Corretores() {
             {
                 usuario != null && usuario.admin == true ?
                     <button>Cadastrar novo funcionários</button>
-                :
+                    :
                     <div></div>
             }
 

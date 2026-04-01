@@ -16,21 +16,30 @@ export default function cadastroUsuario() {
 
     // Função para salvar
     async function salvar(e) {
-         e.preventDefault()
+        e.preventDefault()
 
-          if (!nome || !email || !senha) {
+        if (!nome || !email || !senha) {
             alert("Preencha todos os campos")
             return
         }
-        
+        if (!email.includes("@")) {
+            alert("Email inválido")
+            return
+        }
+
+        if (senha.length < 6) {
+            alert("A senha deve ter no mínimo 6 caracteres")
+            return
+        }
+
         //CADASTRAR NO AUTHENTICATION DO SUPABASE
-console.log("aaaaaaaaaa")
+        console.log("aaaaaaaaaa")
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: senha
         })
         console.log(error)
-        if(data == null){
+        if (data == null) {
             alert("Dados inválidos...")
             return
         }
@@ -41,10 +50,10 @@ console.log("aaaaaaaaaa")
             nome: nome,
             cpf: cpf,
             telefone: telefone,
-            email:email
+            email: email
         }
 
-        const  resposta  = await supabase
+        const resposta = await supabase
             .from('usuarios')
             .insert(objeto)
 
@@ -80,7 +89,7 @@ console.log("aaaaaaaaaa")
                         <form onSubmit={salvar}>
 
 
-        
+
                             <label>
                                 Nome completo:
                                 <br />
