@@ -12,7 +12,6 @@ export default function Dashboard() {
     const [alugados, alteraAlugados] = useState(0);
     const [desligados, alteraDesligados] = useState(0);
 
-    const [listaImoveis, setListaImoveis] = useState([]);
 
 
     useEffect(() => {

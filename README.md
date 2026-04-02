@@ -31,3 +31,11 @@ Duda -> Imóveis e Dashboard
 4 - Total clientes *FAZER FUNCIONAR*
 5 - Qnt. cadastrada no sistema: imóveis, empreendimentos *FAZER FUNCIONAR*
 - Lista diária em aberto
+
+botão inativo/ ativo página clientes
+página dassboard
+página inicial/ tirar lateral 
+página cadastro/ tirar lateral 
+página login/ tirar lateral
+tirar botão de  editar 
+fazer funcionar botão de sair 
