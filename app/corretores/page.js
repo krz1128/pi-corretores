@@ -91,7 +91,7 @@ export default function Corretores() {
         <div className="card p-4 mt-3">
 
             <h3>Corretores</h3>
-            <p>Seja Bem vindo {usuario == null ? "Carregando..." : usuario.nome} </p>
+            <p>Seja Bem vindo!!! </p>
 
             {
                 usuario != null && usuario.admin == true ?

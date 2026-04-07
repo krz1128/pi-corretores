@@ -50,7 +50,7 @@ export default function cadastroUsuario() {
             nome: nome,
             cpf: cpf,
             telefone: telefone,
-            email: email
+            
         }
 
         const resposta = await supabase

@@ -36,7 +36,7 @@ import "./clientes.css"
         .from('clientes')
         .insert(objeto)
 
-        alteraListaClientes(clientes.concat(objeto))
+        buscar()
 }
 
     function formataData(data){
