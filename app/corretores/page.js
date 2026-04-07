@@ -91,11 +91,7 @@ export default function Corretores() {
         <div className="card p-4 mt-3">
 
             <h3>Corretores</h3>
-<<<<<<< HEAD
             <p>Seja Bem vindo(a)!</p>
-=======
-            <p>Seja Bem vindo!!! </p>
->>>>>>> 3577f0bd8d3a9794c204fc9f4de9c729f360387e
 
             {
                 usuario != null && usuario.admin == true ?
