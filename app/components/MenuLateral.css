@@ -1,12 +1,56 @@
-.menulateral{
-    text-align: center;
-     font-family: "Delius", cursive;
-     color: #1c2b3a;
-     background-color: #ffb74d;
-     height: 100%;
-     
+.menulateral {
+    height: 100vh;
+    width: 220px;
+    background: linear-gradient(to bottom, #1c3c70, #1a2d5c);
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
 }
 
-.menulateral .list-group a{
+.menulateral .list-group-item {
+    color: #ffffff;
     background-color: transparent;
+    border: none;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.menulateral .list-group-item:hover {
+    background-color: #2a4a90;
+    cursor: pointer;
+}
+
+.menulateral .list-group-item.active {
+    background-color: #1052a0;
+    font-weight: bold;
+}
+
+.menuPerfil .perfilFoto {
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    width: 50px;
+    height: 50px;
+}
+
+.menuPerfil .btn {
+    font-size: 0.9rem;
+    color: #1c3c70;
+    background-color: #ffffff;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.menuPerfil .btn:hover {
+    background-color: #e6e6e6;
+}
+
+.menuPerfil .dropdown-menu {
+    min-width: 120px;
 }
