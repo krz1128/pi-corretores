@@ -19,7 +19,6 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  // Define rotas que NÃO vão ter menu
   const semMenu = ["/login", "/cadastro_usuario", "/"].includes(pathname);
 
   return (
@@ -27,21 +26,24 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
 
         {semMenu ? (
-          // Layout simples sem menu
           children
         ) : (
-          // Layout com menu lateral
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-3 menulateral" style={{ backgroundColor: "#061247" }}>
-                <div className="logo">
-                  <img src="https://placehold.co/50" alt="ImobConnect Logo" />
-                  <h1 className="fs-5 ImobConnect">ImobConnect</h1>
-                </div>
-                <Menulateral />
+          <div className="layout">
+
+            {/* MENU LATERAL */}
+            <aside className="menulateral">
+              <div className="logo">
+                <img src="https://placehold.co/50" alt="ImobConnect Logo" />
+                <h1 className="fs-5 ImobConnect">ImobConnect</h1>
               </div>
-              <div className="col-9">{children}</div>
-            </div>
+              <Menulateral />
+            </aside>
+
+            {/* CONTEÚDO */}
+            <main className="conteudo">
+              {children}
+            </main>
+
           </div>
         )}
 

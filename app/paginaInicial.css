@@ -1,81 +1,204 @@
+/* =============================================
+   paginaInicial.css — ImobConnect
+   Tema corporativo — paleta azul
+   ============================================= */
 
-/* Fundo e layout da página */
+/* ---------- Reset / Base ------------------- */
 .paginaInicial {
-  background-color: #f5f7fa; /* cinza claro */
-  padding: 50px 20px;        /* espaço interno */
-  font-family: 'Arial', sans-serif;
-  color: #1e293b;
+  min-height: 100vh;
+  background-color: #f0f4f9;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #1a2b45;
+}
+
+/* ---------- Hero --------------------------- */
+.hero {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* centraliza o conteúdo horizontalmente */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 64px;
+  background: linear-gradient(135deg, #0c3464 0%, #185fa5 60%, #2e80d0 100%);
+  color: #ffffff;
 }
 
-/* Título principal */
-.paginaInicial h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #0d1b2a; /* azul escuro */
-  margin-bottom: 30px;
+.hero__badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b5d4f4;
+  margin-bottom: 20px;
 }
 
-
-
-/* Título dentro do card */
-.cardInicial h5 {
-  font-weight: 600;
-  color: #0d1b2a;
+.hero__title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: #ffffff;
 }
 
-/* Texto de apresentação */
-.cardApresentacao {
-  text-align: justify;
-  color: #334155; /* azul acinzentado */
-  line-height: 1.6;
-  margin-top: 15px;
+.hero__subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #b5d4f4;
+  margin: 0 0 36px;
 }
 
-/* Card grande que envolve o texto */
-.cardGrande {
-  padding: 20px;
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Linha divisória */
-hr {
-  border: 0;
-  height: 1px;
-  background-color: #cfd8dc; /* cinza claro */
-  margin: 15px 0;
-}
-
-/* Botões principais (Cadastro/Login) */
-.botaoDuplo button {
-  background-color: #0d1b2a; /* azul escuro */
-  color: white;
-  border: none;
-  padding: 10px 20px;
+/* ---------- Botões ------------------------- */
+.btn {
+  padding: 10px 28px;
   border-radius: 8px;
-  margin: 5px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  text-decoration: none;
+  border: none;
+  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
 }
 
-/* Hover dos botões */
-.botaoDuplo button:hover {
-  background-color: #1b2a3b; /* azul mais claro ao passar o mouse */
+.btn:active {
+  transform: scale(0.97);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .cardInicial {
-    padding: 15px;
-    margin: 15px;
+.btn--primary {
+  background-color: #ffffff;
+  color: #0c3464;
+}
+
+.btn--primary:hover {
+  background-color: #e6f1fb;
+  box-shadow: 0 4px 14px rgba(12, 52, 100, 0.18);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+}
+
+.btn--outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: #185fa5;
+  border: 1.5px solid #85b7eb;
+  padding: 9px 24px;
+}
+
+.btn--ghost:hover {
+  background-color: #e6f1fb;
+}
+
+/* ---------- Seção de Benefícios ------------ */
+.beneficios {
+  padding: 64px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Card de benefício -------------- */
+.card-beneficio {
+  background: #ffffff;
+  border: 1px solid #c8ddf5;
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card-beneficio:hover {
+  box-shadow: 0 6px 24px rgba(24, 95, 165, 0.12);
+  transform: translateY(-3px);
+}
+
+.card-beneficio__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f1fb;
+  border-radius: 10px;
+  color: #185fa5;
+  margin-bottom: 16px;
+}
+
+.card-beneficio__titulo {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c3464;
+  margin: 0 0 8px;
+}
+
+.card-beneficio__texto {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #4a6080;
+  margin: 0;
+}
+
+/* ---------- Seção Sobre ------------------- */
+.sobre {
+  padding: 0 24px 80px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.sobre__card {
+  background: #ffffff;
+  border: 1px solid #b5d4f4;
+  border-left: 4px solid #185fa5;
+  border-radius: 12px;
+  padding: 36px 32px;
+  text-align: center;
+}
+
+.sobre__titulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0c3464;
+  margin: 0 0 12px;
+}
+
+.sobre__texto {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #4a6080;
+  margin: 0 0 24px;
+}
+
+/* ---------- Responsivo -------------------- */
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 16px 48px;
   }
 
-  .paginaInicial h1 {
-    font-size: 2.2rem;
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 
-  .cardApresentacao {
-    font-size: 0.9rem;
+  .sobre__card {
+    padding: 28px 20px;
   }
 }

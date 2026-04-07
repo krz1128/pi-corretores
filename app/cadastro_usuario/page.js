@@ -22,15 +22,6 @@ export default function cadastroUsuario() {
             alert("Preencha todos os campos")
             return
         }
-        if (!email.includes("@")) {
-            alert("Email inválido")
-            return
-        }
-
-        if (senha.length < 6) {
-            alert("A senha deve ter no mínimo 6 caracteres")
-            return
-        }
 
         //CADASTRAR NO AUTHENTICATION DO SUPABASE
         console.log("aaaaaaaaaa")
@@ -49,21 +40,21 @@ export default function cadastroUsuario() {
             id: data.user.id,
             nome: nome,
             cpf: cpf,
-            telefone: telefone,
-            email: email
+            telefone: telefone
         }
 
         const resposta = await supabase
             .from('usuarios')
             .insert(objeto)
 
-        console.log(error)
+        
 
         if (resposta.error == null) {
             alert("Usuário cadastrado com sucesso!")
             alteraNome("")
             alteraEmail("")
             alteraTelefone("")
+            alteraCPF("")
             alteraSenha("")
         }
         else {
@@ -132,8 +123,9 @@ export default function cadastroUsuario() {
                             <br /><br />
 
 
-                            <button> Criar Login</button>
+                            <button> Cadastre - se</button>
 
+                           
 
 
                         </form>

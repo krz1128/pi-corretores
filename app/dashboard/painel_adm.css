@@ -1,80 +1,45 @@
-
-
-
-
-.foto{
-
-    margin: 20px;
-    
+/* CENTRALIZA A TABELA */
+table {
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 30px; /* espaço entre os cards */
 }
 
-.ImobConnect{
-
-    margin: 0px 30px 30px 30px ;
-
+/* GARANTE TAMANHO IGUAL DAS COLUNAS */
+td {
+    width: 320px;
 }
 
-.botaoinicio{
-
-    margin: 30px 0px 0px 0px;
-
-}
-
-.quad{
-
-    margin: 500px 100px 100px 0px;
-
-}
-
-.menul{
-
-    margin: 150px 0px 0px 0px;
-    position: relative;
-}
-
-.tabelausuarios{
-
-    margin: 70px 0px 0px 0px;
-
-}
-
-.cartao2{
-
-    margin: 30px 0px 0px 0px;
-}
-
-.tudo{
-
-    border-radius: 100px;
-
-}
-
+/* CARD */
 .cartao2 {
-    margin: 30px 0px 0px 0px;
+    background: #ffffff;
     border-radius: 12px;
-    background-color: rgb(160, 8, 8);
-    color: white;
+    border-left: 6px solid #1e3a8a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* HOVER SIMPLES */
+/* HOVER */
 .cartao2:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.15);
 }
 
-/* LINKS */
-.cartao2 .card-link {
-    color: #dbeafe;
+/* CONTEÚDO */
+.card-body {
+    padding: 20px;
 }
 
-.cartao2 .card-link:hover {
-    color: white;
+/* TÍTULO */
+.card-title {
+    font-size: 16px;
+    color: #1e3a8a;
+    margin-bottom: 10px;
 }
 
-table {
-    border-collapse: separate;
-    border-spacing: 20px;
+/* NÚMERO */
+.card-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0f172a;
 }
-

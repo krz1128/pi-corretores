@@ -1,71 +1,97 @@
-/* 1. Reset básico (limpa bagunça do navegador) */
-body {
+/* RESET */
+* {
   margin: 0;
   padding: 0;
-  font-family: "montserrat", sans-serif;
-  background-color: #f5f7fa; /* cinza claro */
+  box-sizing: border-box;
 }
 
-/* Logo dentro do menu lateral */
-.menulateral .logo {
+/* BASE */
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f4f7fb;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+}
+
+/* MENU LATERAL (CORRIGIDO) */
+.menulateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 250px;
+  height: 100vh;
+
+  background: #0f172a; /* azul escuro profissional */
+  color: white;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column; /* 🔥 ISSO RESOLVE O PROBLEMA */
+}
+
+/* LOGO */
+.logo {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
 }
 
-.menulateral .logo img {
-  width: 50px;
+.logo img {
+  width: 40px;
   margin-right: 10px;
 }
 
-.menulateral .logo h1 {
-  font-size: 1.2rem;
+.logo h1 {
+  font-size: 1.1rem;
   color: white;
-  margin: 0;
-  font-weight: bold;
 }
 
-/* Nome da empresa */
-.ImobConnect {
-  font-weight: bold;
-  margin: 0;
-}
-
-/* 3. Menu lateral */
-.menulateral {
-  background-color: #1e293b; /* azul escuro */
-  min-height: 100vh; /* ocupa a tela toda */
-  color: rgb(26, 18, 100);
-  padding: 20px;
-}
-
-/* Links do menu */
+/* MENU LINKS (FORÇA VERTICAL) */
 .menulateral a {
-  display: block;
-  color: #ffffff; /* cinza claro */
+  display: block; /* 🔥 garante vertical */
+  width: 100%;
+
+  color: #cbd5f5;
   text-decoration: none;
+
+  padding: 12px;
   margin-bottom: 10px;
-  padding: 8px;
-  border-radius: 6px;
+
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
-/* Quando passa o mouse */
+/* HOVER */
 .menulateral a:hover {
-  background-color: #334155;
+  background-color: #1e3a8a;
   color: white;
 }
 
-/* 4. Conteúdo principal */
-.col-9 {
-  padding: 20px;
+/* CONTEÚDO */
+.conteudo {
+  margin-left: 250px;
+  padding: 30px;
+  width: 100%;
 }
 
-/* 7. Botões padrão */
-button {
-  background-color: #0d6efd;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
+/* CARDS (mantém padrão dashboard) */
+.cartao2 {
+  background: white;
+  border-radius: 12px;
+  border-left: 5px solid #1e3a8a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* REMOVE QUALQUER INTERFERÊNCIA DO BOOTSTRAP */
+.row {
+  margin: 0 !important;
+}
+
+.container-fluid {
+  padding: 0 !important;
 }
