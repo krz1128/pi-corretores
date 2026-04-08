@@ -1,9 +1,152 @@
-.tabelaClientes{
-    padding: 10px 25px;
-    border: 1px solid #ccc;
-    margin: 0px 0px 7px 0px;
-    border-radius: 5px;
-    box-shadow: 1px 2px 3px #CCC;
+/* ── Layout da página ── */
+.page-wrapper-clientes {
+    padding: 28px 32px;
+    min-height: 100vh;
+    background: #f0f4ff;
+    font-family: "DM Sans", "Roboto", sans-serif;
+    color: #1a2340;
+}
+
+/* ── Tabela ── */
+.tabelaClientes {
+    background: #ffffff;
+    border: 1px solid rgba(59, 91, 219, 0.12) !important;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+    margin-top: 20px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.tabelaClientes thead tr {
+    background: #f5f8ff;
+    border-bottom: 1px solid rgba(59, 91, 219, 0.1);
+}
+
+.tabelaClientes thead th {
+    padding: 11px 16px;
+    color: rgba(30, 50, 120, 0.5);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: none !important;
+}
+
+.tabelaClientes tbody tr {
+    border-bottom: 1px solid rgba(59, 91, 219, 0.06) !important;
+    transition: background 0.12s ease;
+}
+
+.tabelaClientes tbody tr:last-child {
+    border-bottom: none !important;
+}
+
+.tabelaClientes tbody tr:hover {
+    background: #f0f4ff !important;
+}
+
+.tabelaClientes td,
+.tabelaClientes th {
+    padding: 12px 16px !important;
+    color: rgba(26, 35, 64, 0.7);
+    font-weight: 400;
+    border: none !important;
+    font-size: 12.5px;
+    vertical-align: middle;
+}
+
+.tabelaClientes th[scope="row"] {
+    color: #1a2340;
+    font-weight: 600;
+}
+
+/* ── Override Bootstrap: botão principal ── */
+.btn-primary {
+    background: #3b5bdb !important;
+    border-color: #3b5bdb !important;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 9px 16px;
+    transition: background 0.15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #2f4cc0 !important;
+    border-color: #2f4cc0 !important;
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.15) !important;
+}
+
+/* ── Override Bootstrap: modal ── */
+.modal-content {
+    background: #ffffff !important;
+    border: 1px solid rgba(59, 91, 219, 0.12) !important;
+    border-radius: 12px !important;
+    color: #1a2340 !important;
+    box-shadow: 0 8px 32px rgba(59, 91, 219, 0.1) !important;
+}
+
+.modal-header {
+    background: #f5f8ff !important;
+    border-bottom: 1px solid rgba(59, 91, 219, 0.1) !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.modal-title {
+    color: #1a2340 !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+}
+
+.modal-footer {
+    background: #f5f8ff !important;
+    border-top: 1px solid rgba(59, 91, 219, 0.1) !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* ── Override Bootstrap: formulário ── */
+.form-label {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: rgba(26, 35, 64, 0.55) !important;
+    margin-bottom: 6px !important;
+}
+
+.form-control {
+    background: #f5f8ff !important;
+    border: 1px solid rgba(59, 91, 219, 0.18) !important;
+    border-radius: 7px !important;
+    padding: 9px 12px !important;
+    font-size: 13px !important;
+    color: #1a2340 !important;
+    transition: border-color 0.15s, box-shadow 0.15s !important;
+}
+
+.form-control::placeholder {
+    color: rgba(26, 35, 64, 0.28) !important;
+}
+
+.form-control:focus {
+    background: #ffffff !important;
+    border-color: rgba(59, 91, 219, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1) !important;
+}
+
+/* ── Override Bootstrap: botão secundário ── */
+.btn-secondary {
+    background: rgba(59, 91, 219, 0.07) !important;
+    color: rgba(26, 35, 64, 0.65) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    transition: background 0.12s !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(59, 91, 219, 0.13) !important;
+    color: #1a2340 !important;
 }
