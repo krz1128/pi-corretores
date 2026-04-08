@@ -73,19 +73,24 @@ export default function Login() {
 
 
     return (
-        <div>
-            <div class="loginCadastro"> Faça o Login</div>
-            <div class="form-floating mb-3">
-                <input onChange={e => alteraNome(e.target.value)} type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+        <div className="loginContainer">
+            <div className="loginForm">
+                <div className="loginCadastro">Faça o Login</div>
 
+                <input
+                    onChange={e => alteraNome(e.target.value)}
+                    type="email"
+                    placeholder="Email"
+                />
+
+                <input
+                    onChange={e => alteraSenha(e.target.value)}
+                    type="password"
+                    placeholder="Senha"
+                />
+
+                <button type="button" onClick={autenticar}>Entrar</button>
             </div>
-            <div class="form-floating">
-                <input onChange={e => alteraSenha(e.target.value)} type="password" class="form-control" id="floatingPassword" placeholder="Senha" />
-
-            </div>
-
-
-            <button type="button" class="btn btn-primary btn-sm" onClick={autenticar}>Entrar</button>
         </div>
     )
 }
