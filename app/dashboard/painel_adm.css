@@ -1,45 +1,135 @@
-/* CENTRALIZA A TABELA */
-table {
-    margin: 40px auto;
-    border-collapse: separate;
-    border-spacing: 30px; /* espaço entre os cards */
+/* =============================================
+   painel_adm.css — ImobConnect
+   Dashboard corporativo — paleta azul
+   ============================================= */
+
+.dashboard {
+  min-height: 100vh;
+  background-color: #f0f4f9;
+  padding: 48px 40px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* GARANTE TAMANHO IGUAL DAS COLUNAS */
-td {
-    width: 320px;
+/* ---------- Header ------------------------- */
+.dashboard__header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c8ddf5;
 }
 
-/* CARD */
+.dashboard__titulo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0c3464;
+  margin: 0 0 4px;
+}
+
+.dashboard__subtitulo {
+  font-size: 14px;
+  color: #4a6080;
+  margin: 0;
+}
+
+/* ---------- Seções ------------------------- */
+.dashboard__secao {
+  margin-bottom: 36px;
+}
+
+.dashboard__secao-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a95b4;
+  margin: 0 0 14px;
+}
+
+/* ---------- Grid de cards ------------------ */
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---------- Card base ---------------------- */
 .cartao2 {
-    background: #ffffff;
-    border-radius: 12px;
-    border-left: 6px solid #1e3a8a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
+  background: #ffffff;
+  border: 1px solid #c8ddf5;
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
 }
 
-/* HOVER */
+.cartao2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #185fa5;
+  border-radius: 12px 12px 0 0;
+}
+
 .cartao2:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(24, 95, 165, 0.12);
 }
 
-/* CONTEÚDO */
-.card-body {
-    padding: 20px;
+/* ---------- Variantes de status ------------ */
+.cartao2--vendido::before  { background-color: #1d9e75; }
+.cartao2--alugado::before  { background-color: #ba7517; }
+.cartao2--desligado::before { background-color: #888780; }
+
+/* ---------- Ícone -------------------------- */
+.cartao2__icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
-/* TÍTULO */
-.card-title {
-    font-size: 16px;
-    color: #1e3a8a;
-    margin-bottom: 10px;
+.cartao2__icone--azul   { background: #e6f1fb; color: #185fa5; }
+.cartao2__icone--navy   { background: #dce8f7; color: #0c3464; }
+.cartao2__icone--claro  { background: #b5d4f4; color: #0c3464; }
+.cartao2__icone--verde  { background: #e1f5ee; color: #0f6e56; }
+.cartao2__icone--amarelo { background: #faeeda; color: #854f0b; }
+.cartao2__icone--cinza  { background: #f1efe8; color: #5f5e5a; }
+
+/* ---------- Textos ------------------------- */
+.cartao2__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a6080;
+  margin: 0 0 8px;
 }
 
-/* NÚMERO */
-.card-text {
-    font-size: 32px;
-    font-weight: bold;
-    color: #0f172a;
+.cartao2__valor {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0c3464;
+  margin: 0;
+  line-height: 1;
+}
+
+/* ---------- Responsivo -------------------- */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 32px 20px;
+  }
+
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
