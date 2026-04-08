@@ -49,9 +49,10 @@ export default function RootLayout({ children }) {
                     {/* LOGO */}
                     <div className="text-center py-4 border-bottom border-secondary">
                       <img
-                        src="https://placehold.co/60"
+                        src="/imobConnet.png"
                         alt="Logo"
-                        className="mb-2 rounded-circle"
+                        className="mb-2"
+                        style={{ width: "120px", objectFit: "contain", borderRadius: "50%"}}
                       />
                       <h1 className="fs-6 fw-semibold m-0">ImobConnect</h1>
                     </div>
