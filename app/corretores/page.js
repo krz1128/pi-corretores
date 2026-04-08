@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import { createClient } from '@supabase/supabase-js'
+import "./corretores.css"
 
 const supabase = createClient(
     'https://ogybpinvvqkfjvotqzcf.supabase.co',
@@ -91,7 +92,7 @@ export default function Corretores() {
         <div className="card p-4 mt-3">
 
             <h3>Corretores</h3>
-            <p>Seja Bem vindo(a)!</p>
+            <p>Seja bem vindo(a)!</p>
 
             {
                 usuario != null && usuario.admin == true ?
