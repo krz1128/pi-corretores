@@ -29,24 +29,53 @@ export default function RootLayout({ children }) {
           children
         ) : (
           <div className="container-fluid p-0">
-            <div className="row m-0 vh-100">
+            <div className="row m-0">
 
-              {/* ── MENU LATERAL ── */}
+              {/* MENU LATERAL */}
               <div className="col-2 p-0">
-                <aside className="menulateral">
+                <aside
+                  className="menulateral d-flex flex-column justify-content-between"
+                  style={{
+                    height: "100vh",
+                    background: "linear-gradient(180deg, #0f172a, #1e293b)",
+                    color: "#fff",
+                    position: "fixed",
+                    width: "16.666%",
+                  }}
+                >
 
-                  <div className="logo text-center py-4">
-                    <img src="https://placehold.co/60" alt="Logo" />
-                    <h1 className="fs-5 mt-2">ImobConnect</h1>
+                  {/* TOPO */}
+                  <div>
+                    {/* LOGO */}
+                    <div className="text-center py-4 border-bottom border-secondary">
+                      <img
+                        src="https://placehold.co/60"
+                        alt="Logo"
+                        className="mb-2 rounded-circle"
+                      />
+                      <h1 className="fs-6 fw-semibold m-0">ImobConnect</h1>
+                    </div>
+
+                    {/* MENU */}
+                    <div className="px-3 py-4">
+                      <Menulateral />
+                    </div>
                   </div>
 
-                  <Menulateral />
+                  {/* FOOTER */}
+                  <div className="text-center small pb-3 opacity-75">
+                    © 2026
+                  </div>
+
                 </aside>
               </div>
 
-              {/* ── CONTEÚDO ── */}
-              <div className="col-10 p-0">
-                <main className="conteudo p-4 bg-light h-100">
+              {/* CONTEÚDO */}
+              <div
+                className="col-10 p-0"
+                style={{ marginLeft: "16.666%" }}
+              >
+                <main className="conteudo p-4 bg-light min-vh-100">
                   {children}
                 </main>
               </div>

@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import "./imoveis.css"
 import { createClient } from '@supabase/supabase-js'
-const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
 
+const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
 
 function Imoveis() {
 
@@ -14,111 +14,65 @@ function Imoveis() {
     const [editando, alteraEditando] = useState(null)
     const [foto, alteraFoto] = useState("")
 
-
     const [filtroStatus, alteraFiltroStatus] = useState("")
-
     const [listaImoveis, alteraListaImoveis] = useState([]);
 
-
-    async function buscaUsuario() {
-        const { data, error } = await supabase
-            .from("usuarios")
-            .select()
-            .eq("id", id_usuario)
-
-        alteraUsuario(data[0])
-
-    }
-
-
-    function editar(objeto) {
-
-        alteraEditando(objeto.id)
-
-        alteraStatus(objeto.status)
-
-    }
-
     async function buscar() {
-        const { data, error } = await supabase
-            .from('imoveis')
-            .select()
-        console.log(data)
+        const { data } = await supabase.from('imoveis').select()
         alteraListaImoveis(data)
     }
 
-
-    async function salvar(e) {
-
-        const objeto = {
-            nome: nome,
-            endereco: endereco,
-            valor: valor,
-            foto: foto
-        }
+    async function salvar() {
+        const objeto = { nome, endereco, valor, foto }
 
         const { error } = await supabase.from('imoveis').insert(objeto)
-        console.log(error)
 
-        if (error == null) {
+        if (!error) {
             alert("Imóvel cadastrado com sucesso!")
             alteraNome("")
             alteraEndereco("")
             alteraValor("")
             alteraFoto("")
-
             buscar()
         } else {
-            alert("Dados inválidos, verifique os campos e tente novamente...")
+            alert("Erro ao cadastrar")
         }
-
-    }
-
-    function cancelaEdicao() {
-        alteraEditando(null)
-        alteraStatus("")
     }
 
     async function atualizar(id, novoStatus) {
-
         const { error } = await supabase
             .from('imoveis')
             .update({ status: novoStatus })
             .eq('id', id)
 
-        if (error == null) {
+        if (!error) {
             alert("Atualizado com sucesso!")
             buscar()
-        } else {
-            alert("Erro ao atualizar")
         }
     }
-
 
     useEffect(() => {
         buscar()
     }, [])
 
-
-
     return (
 
-        
-        <div className="col-10">
+        <div className="col-10 fs-6"> {/* 👈 DIMINUI FONTE GLOBAL */}
 
-            <div class="titulo"></div>
-            <h1>Página de Imóveis </h1>
+            <h3 className="mb-3">Página de Imóveis</h3> {/* 👈 menor */}
 
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+ Adicionar Imóvel</button>
+            <button className="btn btn-primary btn-sm mb-3"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                + Adicionar Imóvel
+            </button>
 
-
-            {/* BARRA DE PESQUISA */}
-
-            <div class="mb-4 w-25 ms-auto">
-                <label class="form-label fw-bold">Filtrar por status</label>
+            {/* FILTRO */}
+            <div className="mb-4 w-25 ms-auto">
+                <label className="form-label fw-semibold small">Filtrar por status</label>
 
                 <select
-                    class="form-select shadow-sm border-primary"
+                    className="form-select form-select-sm shadow-sm border-primary"
                     onChange={(e) => alteraFiltroStatus(e.target.value)}
                 >
                     <option value="">Todos</option>
@@ -128,94 +82,108 @@ function Imoveis() {
                 </select>
             </div>
 
-            {/* div modal */}
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title fs-5" id="exampleModalLabel">Novo Corretor</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            {/* MODAL */}
+            <div className="modal fade" id="exampleModal">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+
+                        <div className="modal-header">
+                            <h5 className="modal-title">Novo Imóvel</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-                        <div class="modal-body">
+
+                        <div className="modal-body">
                             <form>
-                                <div class="mb-3">
-                                    <label class="col-form-label">Nome:</label>
-                                    <input value={(nome)} type="text" class="form-control" onChange={e => alteraNome(e.target.value)} />
+
+                                <div className="mb-2">
+                                    <label className="small">Nome:</label>
+                                    <input value={nome} type="text" className="form-control form-control-sm"
+                                        onChange={e => alteraNome(e.target.value)} />
                                 </div>
-                                <div class="mb-3">
-                                    <label class="col-form-label"> Endereço: </label>
-                                    <textarea value={(endereco)} class="form-control" onChange={e => alteraEndereco(e.target.value)}></textarea>
+
+                                <div className="mb-2">
+                                    <label className="small">Endereço:</label>
+                                    <textarea value={endereco} className="form-control form-control-sm"
+                                        onChange={e => alteraEndereco(e.target.value)} />
                                 </div>
-                                <div class="mb-3">
-                                    <label class="col-form-label"> Valor: </label>
-                                    <textarea value={(valor)} class="form-control" onChange={e => alteraValor(e.target.value)}></textarea>
+
+                                <div className="mb-2">
+                                    <label className="small">Valor:</label>
+                                    <input value={valor} className="form-control form-control-sm"
+                                        onChange={e => alteraValor(e.target.value)} />
                                 </div>
-                                <div class="mb-3">
-                                    <label class="col-form-label"> URL da Imagem: </label>
+
+                                <div className="mb-2">
+                                    <label className="small">Imagem:</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control form-control-sm"
                                         value={foto}
                                         onChange={e => alteraFoto(e.target.value)}
                                     />
                                 </div>
+
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button onClick={salvar} class="btn btn-primary">Salvar</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                        <div className="modal-footer">
+                            <button onClick={salvar} className="btn btn-primary btn-sm">Salvar</button>
+                            <button className="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            {/* CARDS */}
+            <div className="row row-cols-1 row-cols-md-3 g-3">
 
-                {
-                    listaImoveis
-                        .filter((item) => {
-                            if (filtroStatus === "") return true
-                            return item.status === filtroStatus
-                        })
-                        .map((item, index) => (
+                {listaImoveis
+                    .filter(item => filtroStatus === "" || item.status === filtroStatus)
+                    .map(item => (
 
-                            <div class="col" key={item.id}>
-                                <div class="card h-100">
+                        <div className="col" key={item.id}>
+                            <div className="card h-100 shadow-sm">
 
-                                    <img
-                                        className="card-img-top"
-                                        src={item.foto}
-                                        alt="Imagem do imóvel"
-                                        style={{ height: "200px", objectFit: "cover" }}
-                                    />
+                                <img
+                                    className="card-img-top"
+                                    src={item.foto}
+                                    alt="Imagem do imóvel"
+                                    style={{ height: "180px", objectFit: "cover" }}
+                                />
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">{item.nome}</h5>
-                                        <p class="card-text">
-                                            <strong>Endereço:</strong> {item.endereco} <br />
-                                            <strong>Valor:</strong> R$ {item.valor}
-                                        </p>
-                                    </div>
+                                <div className="card-body p-2">
+                                    <h6 className="card-title mb-1">{item.nome}</h6> {/* 👈 menor */}
 
-                                    <div class="btn-group" role="group">
-                                        <select onChange={(e) => atualizar(item.id, e.target.value)} class="form-select">
-                                            <option value="">...</option>
-                                            <option value="vendido">Vendido</option>
-                                            <option value="alugado">Alugado</option>
-                                            <option value="desligado">Desligado</option>
-                                        </select>
-                                    </div>
+                                    <p className="card-text small mb-1">
+                                        <strong>Endereço:</strong> {item.endereco}
+                                    </p>
 
-                                    <div></div>
-
+                                    <p className="card-text small">
+                                        <strong>Valor:</strong> R$ {item.valor}
+                                    </p>
                                 </div>
+
+                                <div className="p-2">
+                                    <select
+                                        onChange={(e) => atualizar(item.id, e.target.value)}
+                                        className="form-select form-select-sm"
+                                    >
+                                        <option value="">...</option>
+                                        <option value="vendido">Vendido</option>
+                                        <option value="alugado">Alugado</option>
+                                        <option value="desligado">Desligado</option>
+                                    </select>
+                                </div>
+
                             </div>
-                        ))
+                        </div>
+                    ))
                 }
 
-            </div >
+            </div>
 
-        </div >
+        </div>
     )
 }
 
