@@ -2,9 +2,9 @@
 .page-wrapper {
     padding: 28px 32px;
     min-height: 100vh;
-    background: #0f0f11;
+    background: #f0f4ff;
     font-family: "DM Sans", "Roboto", sans-serif;
-    color: #f1f1f3;
+    color: #1a2340;
 }
 
 .page-header {
@@ -19,14 +19,14 @@
 .page-title {
     font-size: 20px;
     font-weight: 600;
-    color: #f1f1f3;
+    color: #1a2340;
     margin: 0;
     letter-spacing: -0.01em;
 }
 
 .page-subtitle {
     font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(30, 50, 100, 0.45);
     margin: 3px 0 0;
 }
 
@@ -35,7 +35,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: #6366f1;
+    background: #3b5bdb;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -48,7 +48,7 @@
     white-space: nowrap;
 }
 
-.btn-new:hover { background: #5558e3; }
+.btn-new:hover { background: #2f4cc0; }
 
 .btn-icon {
     width: 14px;
@@ -59,7 +59,7 @@
 .section-label {
     font-size: 10.5px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(30, 50, 120, 0.45);
     text-transform: uppercase;
     letter-spacing: 0.07em;
     margin-bottom: 10px;
@@ -67,11 +67,12 @@
 
 /* ── Tabela ── */
 .table-card {
-    background: #1a1a1f;
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: #ffffff;
+    border: 1px solid rgba(59, 91, 219, 0.12);
     border-radius: 10px;
     overflow: hidden;
     overflow-x: auto;
+    box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
 }
 
 .tabelaEmpreendimentos {
@@ -82,12 +83,13 @@
 }
 
 .tabelaEmpreendimentos thead tr {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(59, 91, 219, 0.1);
+    background: #f5f8ff;
 }
 
 .tabelaEmpreendimentos thead td {
     padding: 11px 16px;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(30, 50, 120, 0.5);
     font-size: 10.5px;
     font-weight: 600;
     text-transform: uppercase;
@@ -96,23 +98,23 @@
 }
 
 .tabelaEmpreendimentos tbody tr {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(59, 91, 219, 0.06);
     transition: background 0.12s ease;
 }
 
 .tabelaEmpreendimentos tbody tr:last-child { border-bottom: none; }
-.tabelaEmpreendimentos tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+.tabelaEmpreendimentos tbody tr:hover { background: #f0f4ff; }
 
 .tabelaEmpreendimentos td,
 .tabelaEmpreendimentos th {
     padding: 12px 16px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(26, 35, 64, 0.7);
     text-align: left;
     font-weight: 400;
 }
 
 .tabelaEmpreendimentos th {
-    color: #f1f1f3;
+    color: #1a2340;
     font-weight: 600;
 }
 
@@ -120,8 +122,8 @@
 .acoes-cell { white-space: nowrap; }
 
 .btn-table-edit {
-    background: rgba(99, 102, 241, 0.12);
-    color: #a5b4fc;
+    background: rgba(59, 91, 219, 0.1);
+    color: #3b5bdb;
     border: none;
     border-radius: 5px;
     padding: 4px 10px;
@@ -133,11 +135,11 @@
     transition: background 0.12s;
 }
 
-.btn-table-edit:hover { background: rgba(99, 102, 241, 0.22); }
+.btn-table-edit:hover { background: rgba(59, 91, 219, 0.18); }
 
 .btn-table-del {
-    background: rgba(239, 68, 68, 0.1);
-    color: #f87171;
+    background: rgba(220, 53, 69, 0.08);
+    color: #dc3545;
     border: none;
     border-radius: 5px;
     padding: 4px 10px;
@@ -148,26 +150,28 @@
     transition: background 0.12s;
 }
 
-.btn-table-del:hover { background: rgba(239, 68, 68, 0.2); }
+.btn-table-del:hover { background: rgba(220, 53, 69, 0.16); }
 
-/* ── Modal escuro ── */
+/* ── Modal claro ── */
 .modal-dark {
-    background: #1a1a1f;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid rgba(59, 91, 219, 0.12);
     border-radius: 12px;
-    color: #f1f1f3;
+    color: #1a2340;
+    box-shadow: 0 8px 32px rgba(59, 91, 219, 0.1);
 }
 
 .modal-header-dark {
-    background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: #f5f8ff;
+    border-bottom: 1px solid rgba(59, 91, 219, 0.1);
     padding: 18px 20px;
+    border-radius: 12px 12px 0 0;
 }
 
 .modal-header-dark .modal-title {
     font-size: 15px;
     font-weight: 600;
-    color: #f1f1f3;
+    color: #1a2340;
 }
 
 .modal-body-dark {
@@ -176,15 +180,16 @@
 }
 
 .modal-footer-dark {
-    background: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    background: #f5f8ff;
+    border-top: 1px solid rgba(59, 91, 219, 0.1);
     padding: 14px 20px;
     display: flex;
     justify-content: flex-end;
     gap: 8px;
+    border-radius: 0 0 12px 12px;
 }
 
-/* ── Formulário escuro ── */
+/* ── Formulário claro ── */
 .form-dark { display: flex; flex-direction: column; gap: 0; }
 
 .form-group { margin-bottom: 14px; }
@@ -193,29 +198,30 @@
     display: block;
     font-size: 12px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 35, 64, 0.55);
     margin-bottom: 6px;
     letter-spacing: 0.01em;
 }
 
 .form-input-dark {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #f5f8ff;
+    border: 1px solid rgba(59, 91, 219, 0.18);
     border-radius: 7px;
     padding: 9px 12px;
     font-size: 13px;
-    color: #f1f1f3;
+    color: #1a2340;
     font-family: inherit;
     transition: border-color 0.15s, box-shadow 0.15s;
     outline: none;
 }
 
-.form-input-dark::placeholder { color: rgba(255, 255, 255, 0.2); }
+.form-input-dark::placeholder { color: rgba(26, 35, 64, 0.28); }
 
 .form-input-dark:focus {
-    border-color: rgba(99, 102, 241, 0.6);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    border-color: rgba(59, 91, 219, 0.5);
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
+    background: #ffffff;
 }
 
 .form-textarea-dark {
@@ -225,8 +231,8 @@
 
 /* ── Botões do modal ── */
 .btn-cancel {
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.6);
+    background: rgba(59, 91, 219, 0.07);
+    color: rgba(26, 35, 64, 0.65);
     border: none;
     border-radius: 7px;
     padding: 8px 16px;
@@ -237,10 +243,10 @@
     transition: background 0.12s;
 }
 
-.btn-cancel:hover { background: rgba(255, 255, 255, 0.1); }
+.btn-cancel:hover { background: rgba(59, 91, 219, 0.13); }
 
 .btn-confirm {
-    background: #6366f1;
+    background: #3b5bdb;
     color: #fff;
     border: none;
     border-radius: 7px;
@@ -252,4 +258,4 @@
     transition: background 0.12s;
 }
 
-.btn-confirm:hover { background: #5558e3; }
+.btn-confirm:hover { background: #2f4cc0; }
