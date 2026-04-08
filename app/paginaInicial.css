@@ -58,6 +58,13 @@
   justify-content: center;
 }
 
+.hero {
+  padding: 10px 24px 40px; /* era 80px, reduzi o padding */
+}
+
+.hero__logo {
+  margin-bottom: -70px; /* era 16px, deixa a frase mais próxima */
+}
 /* ---------- Botões ------------------------- */
 .btn {
   padding: 10px 28px;
@@ -187,6 +194,7 @@
   color: #4a6080;
   margin: 0 0 24px;
 }
+
 
 /* ---------- Responsivo -------------------- */
 @media (max-width: 480px) {

@@ -6,9 +6,17 @@ export default function Home() {
     <div className="paginaInicial">
       {/* Hero */}
       <section className="hero">
-        <div className="hero__badge">Plataforma Imobiliária</div>
-        <h1 className="hero__title">ImobConnect</h1>
-        <p className="hero__subtitle">Gestão completa em um só lugar</p>
+
+        
+        <div className="hero__logo">
+          <img
+            src="/imobConnect2.png"
+            alt="ImobConnect"
+            style={{ width: "460px", objectFit: "contain" }}
+          />
+        </div>
+
+        <p className="hero__subtitle">Gestão imobiliária completa em um só lugar</p>
         <div className="hero__actions">
           <Link href="cadastro_usuario">
             <button className="btn btn--outline">Criar conta</button>
