@@ -1,131 +1,255 @@
-/* Container geral */
-div {
-  max-width: 2000px;
-  margin: 0 auto;
-  padding: 24px;
-  font-family: Arial;
+/* ── Layout da página ── */
+.page-wrapper {
+    padding: 28px 32px;
+    min-height: 100vh;
+    background: #0f0f11;
+    font-family: "DM Sans", "Roboto", sans-serif;
+    color: #f1f1f3;
 }
 
-/* Títulos */
-h1 {
-  font-size: 28px;
-  margin-bottom: 16px;
-  color: #212529;
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-h2 {
-  font-size: 22px;
-  margin: 24px 0 16px;
-  color: #343a40;
+.page-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f1f1f3;
+    margin: 0;
+    letter-spacing: -0.01em;
 }
 
-/* Botões do topo */
-.btn {
-  margin-right: 8px;
-  margin-bottom: 12px;
+.page-subtitle {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 3px 0 0;
 }
 
-/* Formulário */
-form {
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  max-width: 600px;
+/* ── Botão principal ── */
+.btn-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s ease;
+    white-space: nowrap;
 }
 
-/* Labels */
-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  color: #495057;
+.btn-new:hover { background: #5558e3; }
+
+.btn-icon {
+    width: 14px;
+    height: 14px;
 }
 
-/* Inputs */
-form input {
-  margin-top: 6px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ced4da;
-  font-size: 14px;
+/* ── Label de seção ── */
+.section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 10px;
 }
 
-form input:focus {
-  outline: none;
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+/* ── Tabela ── */
+.table-card {
+    background: #1a1a1f;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
-/* Botões do formulário */
-form button {
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  margin-right: 8px;
-}
-
-form button[type="submit"] {
-  background-color: #0d6efd;
-  color: #fff;
-}
-
-form button[type="submit"]:hover {
-  background-color: #0b5ed7;
-}
-
-form button[type="reset"] {
-  background-color: #6c757d;
-  color: #fff;
-}
-
-form button[type="reset"]:hover {
-  background-color: #5c636a;
-}
-
-/* Tabela */
 .tabelaEmpreendimentos {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 24px;
-  background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    min-width: 700px;
 }
 
-/* Cabeçalho da tabela */
-.tabelaEmpreendimentos thead {
-  background-color: #0d6efd;
-  color: #fff;
+.tabelaEmpreendimentos thead tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.tabelaEmpreendimentos td {
-  padding: 12px;
-  border: 1px solid #dee2e6;
-  text-align: center;
-  font-size: 14px;
+.tabelaEmpreendimentos thead td {
+    padding: 11px 16px;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
 }
 
-/* Linhas da tabela */
-.tabelaEmpreendimentos tbody tr:nth-child(even) {
-  background-color: #f8f9fa;
+.tabelaEmpreendimentos tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.12s ease;
 }
 
-.tabelaEmpreendimentos tbody tr:hover {
-  background-color: #e9ecef;
+.tabelaEmpreendimentos tbody tr:last-child { border-bottom: none; }
+.tabelaEmpreendimentos tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+.tabelaEmpreendimentos td,
+.tabelaEmpreendimentos th {
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font-weight: 400;
 }
 
-/* Modal (ajustes leves para Bootstrap) */
-.modal-content {
-  border-radius: 20px;
+.tabelaEmpreendimentos th {
+    color: #f1f1f3;
+    font-weight: 600;
 }
 
-.modal-header {
-  background-color: #0d6efd;
-  color: #fff;
+/* ── Ações da tabela ── */
+.acoes-cell { white-space: nowrap; }
+
+.btn-table-edit {
+    background: rgba(99, 102, 241, 0.12);
+    color: #a5b4fc;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    margin-right: 5px;
+    transition: background 0.12s;
 }
 
-.modal-footer .btn-primary {
-  background-color: #0d6efd;
+.btn-table-edit:hover { background: rgba(99, 102, 241, 0.22); }
+
+.btn-table-del {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
 }
 
+.btn-table-del:hover { background: rgba(239, 68, 68, 0.2); }
+
+/* ── Modal escuro ── */
+.modal-dark {
+    background: #1a1a1f;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: #f1f1f3;
+}
+
+.modal-header-dark {
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 18px 20px;
+}
+
+.modal-header-dark .modal-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f1f1f3;
+}
+
+.modal-body-dark {
+    padding: 16px 20px;
+    background: transparent;
+}
+
+.modal-footer-dark {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 14px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* ── Formulário escuro ── */
+.form-dark { display: flex; flex-direction: column; gap: 0; }
+
+.form-group { margin-bottom: 14px; }
+
+.form-label-dark {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+}
+
+.form-input-dark {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    padding: 9px 12px;
+    font-size: 13px;
+    color: #f1f1f3;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+}
+
+.form-input-dark::placeholder { color: rgba(255, 255, 255, 0.2); }
+
+.form-input-dark:focus {
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.form-textarea-dark {
+    resize: vertical;
+    min-height: 70px;
+}
+
+/* ── Botões do modal ── */
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
+}
+
+.btn-cancel:hover { background: rgba(255, 255, 255, 0.1); }
+
+.btn-confirm {
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
+}
+
+.btn-confirm:hover { background: #5558e3; }
