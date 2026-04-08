@@ -1,9 +1,9 @@
-
 'use client'
 import "./cadastro_empreendimento.css"
 import { useEffect, useState } from "react";
-import { createClient, FunctionRegion } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 const supabase = createClient('https://ogybpinvvqkfjvotqzcf.supabase.co', 'sb_publishable_SOLcXSeorAHNpnq8o04xkw_IllVGRXg')
+
 export default function CadastroEmpreendimento() {
 
     const [construtora, alteraConstrutora] = useState("")
@@ -25,43 +25,24 @@ export default function CadastroEmpreendimento() {
 
     const [empreendimentos, alteraCadastroEmpreendimento] = useState([]);
 
-
     async function buscar() {
-        const { data, error } = await supabase
-            .from('empreendimentos')
-            .select()
-        console.log(data)
+        const { data } = await supabase.from('empreendimentos').select()
         alteraCadastroEmpreendimento(data)
     }
 
     async function salvar() {
         const objeto = {
-            construtora: construtora,
-            tipo_imovel: tipoimovel,
-            valor_empreendimento: valor,
-            forma_pagamento: pagamento,
-            prazo_entrega: prazo,
-            unidades_disponiveis: unidades,
-            condominio: condominio
+            construtora, tipo_imovel: tipoimovel, valor_empreendimento: valor,
+            forma_pagamento: pagamento, prazo_entrega: prazo,
+            unidades_disponiveis: unidades, condominio
         }
-
-        const { error } = await supabase
-            .from('empreendimentos')
-            .insert(objeto)
-        console.log(error)
-
+        const { error } = await supabase.from('empreendimentos').insert(objeto)
         if (error == null) {
             alert("Empreendimento cadastrado com sucesso")
-            alteraConstrutora("")
-            alteraTipoimovel("")
-            alteraValor("")
-            alteraPagamento("")
-            alteraPrazo("")
-            alteraUnidades("")
-            alteraCondominio("")
+            alteraConstrutora(""); alteraTipoimovel(""); alteraValor("")
+            alteraPagamento(""); alteraPrazo(""); alteraUnidades(""); alteraCondominio("")
             location.reload()
-        }
-        else {
+        } else {
             alert("Dados inválidos, verifique os campos e tente novamente.")
         }
     }
@@ -79,307 +60,139 @@ export default function CadastroEmpreendimento() {
 
     async function editar() {
         const objeto = {
-            construtora: construtoraEdit,
-            tipo_imovel: tipoimovelEdit,
-            valor_empreendimento: valorEdit,
-            forma_pagamento: pagamentoEdit,
-            prazo_entrega: prazoEdit,
-            unidades_disponiveis: unidadesEdit,
+            construtora: construtoraEdit, tipo_imovel: tipoimovelEdit,
+            valor_empreendimento: valorEdit, forma_pagamento: pagamentoEdit,
+            prazo_entrega: prazoEdit, unidades_disponiveis: unidadesEdit,
             condominio: condominioEdit
         }
-
-        const { error } = await supabase
-            .from('empreendimentos')
-            .update(objeto)
-            .eq('id', idEditando)
-        console.log(error)
-
-        if (error == null) {
-            alert("Empreendimento atualizado com sucesso")
-            location.reload()
-        }
-        else {
-            alert("Dados inválidos, verifique os campos e tente novamente.")
-        }
+        const { error } = await supabase.from('empreendimentos').update(objeto).eq('id', idEditando)
+        if (error == null) { alert("Empreendimento atualizado com sucesso"); location.reload() }
+        else { alert("Dados inválidos, verifique os campos e tente novamente.") }
     }
 
     async function acoes(id) {
-        const opcao = confirm("Tem certeza que deseja excluir o item?")
-
-        if (opcao == false) {
-            return
-        }
-
-        const response = await supabase.from('empreendimentos').delete().eq('id', id)
+        if (!confirm("Tem certeza que deseja excluir o item?")) return
+        await supabase.from('empreendimentos').delete().eq('id', id)
         location.reload()
     }
 
-    useEffect(() => {
-        buscar()
-    }, [])
+    useEffect(() => { buscar() }, [])
 
     return (
+        <div className="page-wrapper">
 
-        <div>
-            <h1>Cadastro de empreendimentos</h1>
-            <br />
-
-            <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever="@getbootstrap"
-            >
-                Novo empreendimento
-            </button>
-            <div
-                className="modal fade"
-                id="exampleModal"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">
-                                Insira as informações
-                            </h1>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            />
-                        </div>
-
-                        <div className="modal-body">
-                            <form>
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Construtora:
-                                    </label>
-                                    <input onChange={e => alteraConstrutora(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Tipo de imóvel:
-                                    </label>
-                                    <input onChange={e => alteraTipoimovel(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Valor:
-                                    </label>
-                                    <input onChange={e => alteraValor(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Forma de pagamento:
-                                    </label>
-                                    <input onChange={e => alteraPagamento(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Prazo de entrega:
-                                    </label>
-                                    <input onChange={e => alteraPrazo(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="recipient-name" className="col-form-label">
-                                        Unidades disponíveis:
-                                    </label>
-                                    <input onChange={e => alteraUnidades(e.target.value)}
-                                        type="text"
-                                        className="form-control"
-                                        id="recipient-name"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label htmlFor="message-text" className="col-form-label">
-                                        Condomínio:
-                                    </label>
-                                    <textarea onChange={e => alteraCondominio(e.target.value)}
-                                        className="form-control"
-                                        id="message-text"
-                                    ></textarea>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                            >
-                                Cancelar
-                            </button>
-                            <button onClick={salvar} type="button" className="btn btn-primary">
-                                Cadastrar
-                            </button>
-                        </div>
-                    </div>
+            {/* ── Cabeçalho da página ── */}
+            <div className="page-header">
+                <div>
+                    <h1 className="page-title">Empreendimentos</h1>
+                    <p className="page-subtitle">Gerencie todos os empreendimentos cadastrados</p>
                 </div>
+                <button
+                    type="button"
+                    className="btn-new"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                >
+                    <svg viewBox="0 0 16 16" fill="none" className="btn-icon">
+                        <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    Novo empreendimento
+                </button>
             </div>
-            <div
-                className="modal fade"
-                id="modalEdicao"
-                tabIndex="-1"
-                aria-labelledby="modalEdicaoLabel"
-                aria-hidden="true"
-            >
+
+            {/* ── Modal: Cadastro ── */}
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="modalEdicaoLabel">
-                                Editar empreendimento
-                            </h1>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            />
+                    <div className="modal-content modal-dark">
+                        <div className="modal-header modal-header-dark">
+                            <h5 className="modal-title" id="exampleModalLabel">Novo empreendimento</h5>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" />
                         </div>
-
-                        <div className="modal-body">
-                            <form>
-                                <div className="mb-1">
-                                    <label className="col-form-label">Construtora:</label>
-                                    <input
-                                        onChange={e => alteraConstrutoraEdit(e.target.value)}
-                                        value={construtoraEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Tipo de imóvel:</label>
-                                    <input
-                                        onChange={e => alteraTipoimovelEdit(e.target.value)}
-                                        value={tipoimovelEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Valor:</label>
-                                    <input
-                                        onChange={e => alteraValorEdit(e.target.value)}
-                                        value={valorEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Forma de pagamento:</label>
-                                    <input
-                                        onChange={e => alteraPagamentoEdit(e.target.value)}
-                                        value={pagamentoEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Prazo de entrega:</label>
-                                    <input
-                                        onChange={e => alteraPrazoEdit(e.target.value)}
-                                        value={prazoEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Unidades disponíveis:</label>
-                                    <input
-                                        onChange={e => alteraUnidadesEdit(e.target.value)}
-                                        value={unidadesEdit}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
-
-                                <div className="mb-1">
-                                    <label className="col-form-label">Condomínio:</label>
-                                    <textarea
-                                        onChange={e => alteraCondominioEdit(e.target.value)}
-                                        value={condominioEdit}
-                                        className="form-control"
-                                    ></textarea>
+                        <div className="modal-body modal-body-dark">
+                            <form className="form-dark">
+                                {[
+                                    { label: "Construtora", fn: alteraConstrutora, type: "text" },
+                                    { label: "Tipo de imóvel", fn: alteraTipoimovel, type: "text" },
+                                    { label: "Valor", fn: alteraValor, type: "text" },
+                                    { label: "Forma de pagamento", fn: alteraPagamento, type: "text" },
+                                    { label: "Prazo de entrega", fn: alteraPrazo, type: "text" },
+                                    { label: "Unidades disponíveis", fn: alteraUnidades, type: "text" },
+                                ].map(({ label, fn, type }) => (
+                                    <div className="form-group" key={label}>
+                                        <label className="form-label-dark">{label}</label>
+                                        <input onChange={e => fn(e.target.value)} type={type} className="form-input-dark" />
+                                    </div>
+                                ))}
+                                <div className="form-group">
+                                    <label className="form-label-dark">Condomínio</label>
+                                    <textarea onChange={e => alteraCondominio(e.target.value)} className="form-input-dark form-textarea-dark" />
                                 </div>
                             </form>
                         </div>
-
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                            >
-                                Cancelar
-                            </button>
-                            <button onClick={editar} type="button" className="btn btn-primary">
-                                Salvar alterações
-                            </button>
+                        <div className="modal-footer modal-footer-dark">
+                            <button type="button" className="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            <button onClick={salvar} type="button" className="btn-confirm">Cadastrar</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* ── Modal: Edição ── */}
+            <div className="modal fade" id="modalEdicao" tabIndex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content modal-dark">
+                        <div className="modal-header modal-header-dark">
+                            <h5 className="modal-title" id="modalEdicaoLabel">Editar empreendimento</h5>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" />
+                        </div>
+                        <div className="modal-body modal-body-dark">
+                            <form className="form-dark">
+                                {[
+                                    { label: "Construtora", val: construtoraEdit, fn: alteraConstrutoraEdit },
+                                    { label: "Tipo de imóvel", val: tipoimovelEdit, fn: alteraTipoimovelEdit },
+                                    { label: "Valor", val: valorEdit, fn: alteraValorEdit },
+                                    { label: "Forma de pagamento", val: pagamentoEdit, fn: alteraPagamentoEdit },
+                                    { label: "Prazo de entrega", val: prazoEdit, fn: alteraPrazoEdit },
+                                    { label: "Unidades disponíveis", val: unidadesEdit, fn: alteraUnidadesEdit },
+                                ].map(({ label, val, fn }) => (
+                                    <div className="form-group" key={label}>
+                                        <label className="form-label-dark">{label}</label>
+                                        <input onChange={e => fn(e.target.value)} value={val} type="text" className="form-input-dark" />
+                                    </div>
+                                ))}
+                                <div className="form-group">
+                                    <label className="form-label-dark">Condomínio</label>
+                                    <textarea onChange={e => alteraCondominioEdit(e.target.value)} value={condominioEdit} className="form-input-dark form-textarea-dark" />
+                                </div>
+                            </form>
+                        </div>
+                        <div className="modal-footer modal-footer-dark">
+                            <button type="button" className="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            <button onClick={editar} type="button" className="btn-confirm">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <h2>Empreendimentos</h2>
-
-            <table border="1" className="tabelaEmpreendimentos">
-                <thead>
-                    <tr>
-                        <td>Construtora</td>
-                        <td>Tipo de imóvel</td>
-                        <td>Valor</td>
-                        <td>Pagamento</td>
-                        <td>Prazo de entrega</td>
-                        <td>Unidades disponíveis</td>
-                        <td>Condomínio</td>
-                        <td>Ações</td>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {
-                        empreendimentos.map(
-                            item => <tr>
+            {/* ── Tabela ── */}
+            <p className="section-label">Lista de empreendimentos</p>
+            <div className="table-card">
+                <table className="tabelaEmpreendimentos">
+                    <thead>
+                        <tr>
+                            <td>Construtora</td>
+                            <td>Tipo de imóvel</td>
+                            <td>Valor</td>
+                            <td>Pagamento</td>
+                            <td>Prazo</td>
+                            <td>Unidades</td>
+                            <td>Condomínio</td>
+                            <td>Ações</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {empreendimentos.map(item => (
+                            <tr key={item.id}>
                                 <th scope="row">{item.construtora}</th>
                                 <td>{item.tipo_imovel}</td>
                                 <td>{item.valor_empreendimento}</td>
@@ -387,21 +200,24 @@ export default function CadastroEmpreendimento() {
                                 <td>{item.prazo_entrega}</td>
                                 <td>{item.unidades_disponiveis}</td>
                                 <td>{item.condominio}</td>
-                                <td>
+                                <td className="acoes-cell">
                                     <button
+                                        className="btn-table-edit"
                                         onClick={() => abrirEdicao(item)}
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalEdicao"
                                     >
-                                        EDITAR
+                                        Editar
                                     </button>
-                                    <button onClick={() => acoes(item.id)}>EXCLUIR</button>
+                                    <button className="btn-table-del" onClick={() => acoes(item.id)}>
+                                        Excluir
+                                    </button>
                                 </td>
                             </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

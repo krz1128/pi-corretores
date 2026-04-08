@@ -102,7 +102,9 @@ function Imoveis() {
 
 
     return (
-        <div>
+
+        
+        <div className="col-10">
 
             <div class="titulo"></div>
             <h1>Página de Imóveis </h1>

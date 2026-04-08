@@ -28,22 +28,30 @@ export default function RootLayout({ children }) {
         {semMenu ? (
           children
         ) : (
-          <div className="layout">
+          <div className="container-fluid p-0">
+            <div className="row m-0 vh-100">
 
-            {/* MENU LATERAL */}
-            <aside className="menulateral">
-              <div className="logo">
-                <img src="https://placehold.co/50" alt="ImobConnect Logo" />
-                <h1 className="fs-5 ImobConnect">ImobConnect</h1>
+              {/* ── MENU LATERAL ── */}
+              <div className="col-2 p-0">
+                <aside className="menulateral">
+
+                  <div className="logo text-center py-4">
+                    <img src="https://placehold.co/60" alt="Logo" />
+                    <h1 className="fs-5 mt-2">ImobConnect</h1>
+                  </div>
+
+                  <Menulateral />
+                </aside>
               </div>
-              <Menulateral />
-            </aside>
 
-            {/* CONTEÚDO */}
-            <main className="conteudo">
-              {children}
-            </main>
+              {/* ── CONTEÚDO ── */}
+              <div className="col-10 p-0">
+                <main className="conteudo p-4 bg-light h-100">
+                  {children}
+                </main>
+              </div>
 
+            </div>
           </div>
         )}
 
