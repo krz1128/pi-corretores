@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
                   className="menulateral d-flex flex-column justify-content-between"
                   style={{
                     height: "100vh",
-                    background: "linear-gradient(180deg, #0f172a, #1e293b)",
+                    background: "linear-gradient(180deg, #1b4891, #185fa5)",
                     color: "#fff",
                     position: "fixed",
                     width: "16.666%",
