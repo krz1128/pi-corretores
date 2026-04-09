@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  const semMenu = ["/login", "/cadastro_usuario", "/"].includes(pathname);
+ const semMenu = ["/login", "/cadastro_usuario", "/", "/saiba_mais"].includes(pathname);
 
   return (
     <html lang="pt-br">

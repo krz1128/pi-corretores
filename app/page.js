@@ -92,7 +92,7 @@ export default function Home() {
             Nossa plataforma foi desenvolvida especialmente para imobiliárias e corretores que desejam mais
             organização, praticidade e resultados no dia a dia. Simples, prático e feito para gerar resultados.
           </p>
-          <Link href="sobre">
+          <Link href="saiba_mais">
             <button className="btn btn--ghost">Saiba mais →</button>
           </Link>
         </div>
