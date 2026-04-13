@@ -198,3 +198,11 @@ button:hover {
     border-color: rgba(59, 91, 219, 0.5) !important;
     box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1) !important;
 }
+
+.erro-campo {
+    display: block;
+    color: #dc3545;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
