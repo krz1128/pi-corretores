@@ -40,6 +40,11 @@ function Imoveis() {
             alert("Imóvel cadastrado com sucesso!")
             limparCampos()
             buscar()
+
+            //  FECHAR MODAL AUTOMATICAMENTE
+            const modal = document.getElementById('modalCadastro')
+            const modalInstance = window.bootstrap.Modal.getInstance(modal)
+            modalInstance.hide()
         }
     }
 
