@@ -152,6 +152,91 @@ export default function SaibaMais() {
         </div>
       </section>
 
+      {/* PLANOS */}
+      <section className="sm-planos">
+        <div className="sm-planos__inner">
+
+          <div className="sm-planos__cabecalho">
+            <span className="sm-headline__tag">Planos e preços</span>
+            <h2 className="sm-planos__titulo">Escolha o plano ideal para sua imobiliária</h2>
+            <p className="sm-planos__subtitulo">Sem taxa de adesão. Cancele quando quiser.</p>
+          </div>
+
+          <div className="sm-planos__grid">
+
+            {/* BÁSICO */}
+            <div className="sm-plano">
+              <div className="sm-plano__topo">
+                <span className="sm-plano__nome">Básico</span>
+                <div className="sm-plano__preco">
+                  <span className="sm-plano__cifrao">R$</span>
+                  <span className="sm-plano__valor">49</span>
+                  <span className="sm-plano__periodo">/mês</span>
+                </div>
+                <p className="sm-plano__descricao">Ideal para corretores autônomos que querem sair das planilhas.</p>
+              </div>
+              <ul className="sm-plano__lista">
+                <li>1 corretor</li>
+                <li>Cadastro de clientes</li>
+                <li>Cadastro de imóveis</li>
+                <li>Lista diária automática</li>
+              </ul>
+              <Link href="/cadastro_usuario">
+                <button className="sm-plano__btn sm-plano__btn--secundario">Começar agora</button>
+              </Link>
+            </div>
+
+            {/* PROFISSIONAL */}
+            <div className="sm-plano sm-plano--destaque">
+              <div className="sm-plano__badge">Mais popular</div>
+              <div className="sm-plano__topo">
+                <span className="sm-plano__nome">Profissional</span>
+                <div className="sm-plano__preco">
+                  <span className="sm-plano__cifrao">R$</span>
+                  <span className="sm-plano__valor">149</span>
+                  <span className="sm-plano__periodo">/mês</span>
+                </div>
+                <p className="sm-plano__descricao">Para equipes pequenas que precisam de mais organização e controle.</p>
+              </div>
+              <ul className="sm-plano__lista">
+                <li>Até 5 corretores</li>
+                <li>Tudo do plano Básico</li>
+                <li>Gestão de empreendimentos</li>
+                <li>Relatórios de desempenho</li>
+                <li>Suporte por e-mail</li>
+              </ul>
+              <Link href="/cadastro_usuario">
+                <button className="sm-plano__btn sm-plano__btn--principal">Escolher plano</button>
+              </Link>
+            </div>
+
+            {/* EMPRESA */}
+            <div className="sm-plano">
+              <div className="sm-plano__topo">
+                <span className="sm-plano__nome">Empresa</span>
+                <div className="sm-plano__preco">
+                  <span className="sm-plano__cifrao">R$</span>
+                  <span className="sm-plano__valor">299</span>
+                  <span className="sm-plano__periodo">/mês</span>
+                </div>
+                <p className="sm-plano__descricao">Para imobiliárias que precisam de escala sem limite de usuários.</p>
+              </div>
+              <ul className="sm-plano__lista">
+                <li>Usuários ilimitados</li>
+                <li>Tudo do plano Profissional</li>
+                <li>Personalização do sistema</li>
+                <li>Suporte prioritário</li>
+                <li>Onboarding dedicado</li>
+              </ul>
+              <Link href="/cadastro_usuario">
+                <button className="sm-plano__btn sm-plano__btn--secundario">Falar com a equipe</button>
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* CTA FINAL */}
       <section className="sm-cta">
         <div className="sm-cta__inner">
