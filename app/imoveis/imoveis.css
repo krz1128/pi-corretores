@@ -1,6 +1,533 @@
+/* ============================================================
+   imoveis.css — Sistema Imobiliário · Dashboard SaaS
+   Palette: #c8ddf5 · #185fa5 · #0c3464 · #f0f4f9
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ---------- Tokens ---------- */
+:root {
+    --sky: #c8ddf5;
+    --ocean: #185fa5;
+    --navy: #0c3464;
+    --fog: #f0f4f9;
+    --white: #ffffff;
+    --ink: #0d1f36;
+    --muted: #5e7a96;
+    --border: #daeaf7;
+
+    --sh-card: 0 2px 12px rgba(12, 52, 100, .08), 0 1px 3px rgba(12, 52, 100, .05);
+    --sh-hover: 0 12px 36px rgba(12, 52, 100, .16), 0 4px 12px rgba(24, 95, 165, .10);
+    --sh-btn: 0 4px 14px rgba(24, 95, 165, .38);
+
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 18px;
+    --r-xl: 24px;
+    --r-pill: 999px;
+    --ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--fog);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   PAGE WRAPPER
+   ============================================================ */
+.col-10 {
+    padding: 2.25rem 2.5rem 3rem;
+}
+
+/* ============================================================
+   PAGE TITLE
+   ============================================================ */
+h3.mb-3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -.4px;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+}
+
+h3.mb-3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 52px;
+    height: 2px;
+    background: var(--ocean);
+    border-radius: var(--r-pill);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: .25px;
+    border-radius: var(--r-pill);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: all .22s var(--ease);
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--navy) 100%);
+    color: #fff !important;
+    box-shadow: var(--sh-btn);
+    padding: .52rem 1.3rem;
+    font-size: .84rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1a72cc 0%, var(--ocean) 100%);
+    box-shadow: 0 8px 24px rgba(24, 95, 165, .45);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--sh-btn);
+}
+
+.btn-secondary {
+    background: var(--fog);
+    color: var(--muted) !important;
+    border: 1.5px solid var(--border) !important;
+    padding: .52rem 1.3rem;
+    font-size: .84rem;
+}
+
+.btn-secondary:hover {
+    background: var(--sky);
+    color: var(--navy) !important;
+    border-color: var(--sky) !important;
+    transform: translateY(-1px);
+}
+
+.btn-sm {
+    font-size: .8rem;
+    padding: .44rem 1.05rem;
+}
+
+/* ============================================================
+   FILTRO PANEL
+   ============================================================ */
+.mb-4.w-25.ms-auto {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1rem 1.15rem .9rem;
+    box-shadow: var(--sh-card);
+    min-width: 200px;
+}
+
+.mb-4.w-25.ms-auto .form-label,
+.mb-4.w-25.ms-auto label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: .4rem;
+    display: block;
+}
+
+/* ============================================================
+   FORM CONTROLS
+   ============================================================ */
+.form-control,
+.form-select {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .87rem;
+    color: var(--ink);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    box-shadow: 0 1px 3px rgba(12, 52, 100, .05);
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--ocean);
+    box-shadow: 0 0 0 3.5px rgba(24, 95, 165, .13), 0 1px 3px rgba(12, 52, 100, .05);
+    background: var(--white);
+}
+
+.form-control::placeholder {
+    color: #a8bed4;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' fill='none'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23185fa5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .85rem center;
+    padding-right: 2.2rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-control-sm,
+.form-select-sm {
+    font-size: .82rem;
+    padding: .42rem .75rem;
+    border-radius: var(--r-sm);
+}
+
+label.small,
+.form-label {
+    font-size: .76rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    margin-bottom: .3rem;
+    display: block;
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-content {
+    border: none;
+    border-radius: var(--r-xl);
+    box-shadow: 0 28px 80px rgba(12, 52, 100, .22);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a4d8a 55%, var(--ocean) 100%);
+    border-bottom: none;
+    padding: 1.3rem 1.6rem;
+}
+
+.modal-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.1px;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: .7;
+    transition: opacity .2s;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 1.6rem;
+    background: var(--white);
+}
+
+.modal-body .mb-2 {
+    margin-bottom: .95rem !important;
+}
+
+.modal-footer {
+    background: var(--fog);
+    border-top: 1px solid var(--border);
+    padding: .9rem 1.6rem;
+    gap: .6rem;
+}
+
+.modal-backdrop.show {
+    opacity: .5;
+}
+
+/* ============================================================
+   CARDS GRID
+   ============================================================ */
+.row.row-cols-1.row-cols-md-3.g-3 {
+    --bs-gutter-x: 1.35rem;
+    --bs-gutter-y: 1.35rem;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+    background: var(--white);
+    border: 1.5px solid var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    box-shadow: var(--sh-card) !important;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    overflow: hidden;
+    animation: riseIn .38s var(--ease) both;
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.col:nth-child(1) .card {
+    animation-delay: .04s;
+}
+
+.col:nth-child(2) .card {
+    animation-delay: .09s;
+}
+
+.col:nth-child(3) .card {
+    animation-delay: .14s;
+}
+
+.col:nth-child(4) .card {
+    animation-delay: .19s;
+}
+
+.col:nth-child(5) .card {
+    animation-delay: .24s;
+}
+
+.col:nth-child(6) .card {
+    animation-delay: .29s;
+}
+
+.col:nth-child(7) .card {
+    animation-delay: .34s;
+}
+
+.col:nth-child(8) .card {
+    animation-delay: .39s;
+}
+
+.col:nth-child(9) .card {
+    animation-delay: .44s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sh-hover) !important;
+    border-color: rgba(24, 95, 165, .28) !important;
+}
+
+/* ============================================================
+   CARD IMAGE
+   ============================================================ */
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
+    width: 100%;
+    height: 185px !important;
+    object-fit: cover !important;
+    display: block;
+    transition: transform .45s var(--ease);
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.055);
+}
+
+/* ============================================================
+   BADGE STATUS
+   ============================================================ */
+.badge {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .55px;
+    text-transform: uppercase;
+    padding: .32em .75em;
+    border-radius: var(--r-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: .3em;
+    line-height: 1;
+    backdrop-filter: blur(6px);
+    border: 1px solid transparent;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .10);
+}
+
+.badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+/* vendido */
+.badge.bg-success {
+    background: rgba(218, 248, 235, .97) !important;
+    color: #087a4a !important;
+    border-color: #a8e6c4 !important;
+}
+
+/* alugado */
+.badge.bg-warning {
+    background: rgba(255, 248, 215, .97) !important;
+    color: #8c5c00 !important;
+    border-color: #f5d98a !important;
+}
+
+.badge.text-dark {
+    color: #8c5c00 !important;
+}
+
+/* desligado */
+.badge.bg-danger {
+    background: rgba(255, 232, 230, .97) !important;
+    color: #a5201a !important;
+    border-color: #f5b0ab !important;
+}
+
+/* sem status */
+.badge.bg-secondary {
+    background: rgba(240, 244, 249, .97) !important;
+    color: var(--muted) !important;
+    border-color: var(--border) !important;
+}
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+.card-body.p-2 {
+    padding: 1.05rem 1.15rem .7rem !important;
+}
+
+h6.card-title {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.15px;
+    margin-bottom: .5rem !important;
+    line-height: 1.3;
+}
+
+p.card-text.small {
+    font-size: .8rem;
+    color: var(--muted);
+    margin-bottom: .35rem !important;
+    line-height: 1.5;
+}
+
+p.card-text.small strong {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+/* ============================================================
+   STATUS SELECT NO CARD
+   ============================================================ */
+.card>div.p-2:last-child {
+    padding: .75rem 1.15rem 1.05rem !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 244, 249, .65) 100%);
+    border-top: 1px solid var(--border);
+}
+
+.card>div.p-2:last-child .form-select {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--navy);
+    background-color: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: .44rem .75rem;
+    padding-right: 2rem;
+    cursor: pointer;
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.card>div.p-2:last-child .form-select:hover {
+    border-color: var(--ocean);
+}
+
+.card>div.p-2:last-child .form-select:focus {
+    border-color: var(--ocean);
+    box-shadow: 0 0 0 3px rgba(24, 95, 165, .12);
+    outline: none;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fog);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sky);
+    border-radius: var(--r-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aac8e8;
+}
+
+::selection {
+    background: rgba(200, 221, 245, .55);
+    color: var(--navy);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 991.98px) {
+    .col-10 {
+        padding: 1.5rem 1.25rem 2.5rem;
+    }
+
+    .mb-4.w-25.ms-auto {
+        width: 100% !important;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .col-10 {
+        padding: 1.1rem 1rem 2rem;
+    }
+
+    h3.mb-3 {
+        font-size: 1.2rem;
+    }
+
+    .card-body.p-2 {
+        padding: .85rem .9rem .55rem !important;
+    }
+
+    .card>div.p-2:last-child {
+        padding: .6rem .9rem .85rem !important;
+    }
 }
